@@ -19,11 +19,21 @@ body{
 .dark{background:#121212;color:#eee}
 .dark .card{background:#1e1e1e}
 
-section{padding:70px 20px;max-width:950px;margin:auto}
+section{
+  padding:70px 20px;
+  max-width:950px;
+  margin:auto;
+  opacity:.65;
+  transition:.6s ease;
+}
+section.active{opacity:1}
+
 h1,h2,h3{font-family:'Playfair Display',serif;text-align:center}
 .center{text-align:center}
+
+/* CARD */
 .card{
-  background:#fff;
+  background:rgba(255,255,255,.95);
   border-radius:28px;
   padding:40px;
   margin-top:30px;
@@ -34,12 +44,13 @@ h1,h2,h3{font-family:'Playfair Display',serif;text-align:center}
 .hero{
   min-height:100vh;
   background:
-    linear-gradient(rgba(255,255,255,.75),rgba(255,255,255,.75)),
+    linear-gradient(rgba(255,255,255,.45),rgba(255,255,255,.45)),
     url("assets/foto1.jpg") center/cover no-repeat;
   display:flex;align-items:center;justify-content:center;
 }
 .hero-box{
-  background:#fff;
+  background:rgba(255,255,255,.78); /* <<< TIDAK BLOK */
+  backdrop-filter: blur(6px);
   padding:50px 35px;
   border-radius:32px;
   max-width:540px;
@@ -80,7 +91,7 @@ button{
 .timeline{border-left:3px solid #b89b5e;padding-left:22px}
 .timeline div{margin-bottom:28px}
 
-/* GALERI SWIPE */
+/* GALERI */
 .gallery{
   display:flex;
   gap:16px;
@@ -104,7 +115,7 @@ input,select,textarea{
 }
 textarea{min-height:90px}
 
-/* FLOATING BUTTONS */
+/* FLOAT */
 .float{
   position:fixed;
   right:20px;
@@ -126,18 +137,23 @@ footer{
   padding:60px 20px;
   color:#b89b5e;
 }
-a{color:#b89b5e;text-decoration:none}
+
+/* ORNAMEN JAWA */
+.ornamen{
+  text-align:center;
+  color:#b89b5e;
+  letter-spacing:6px;
+  margin:30px 0;
+}
 </style>
 </head>
 
 <body>
 
-<!-- AUDIO -->
 <audio id="bgm" loop>
   <source src="assets/music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- FLOAT BUTTONS -->
 <div id="musicBtn" class="float" onclick="toggleMusic()">🎵</div>
 <div id="darkBtn" class="float" onclick="toggleDark()">🌙</div>
 
@@ -163,7 +179,14 @@ a{color:#b89b5e;text-decoration:none}
     pada acara pernikahan kami:
   </p>
   <h3 id="guest">Bapak/Ibu/Saudara/i</h3>
+  <p id="personalMessage" style="font-style:italic">
+    Merupakan suatu kebahagiaan tersendiri bagi kami
+    apabila Bapak/Ibu/Saudara/i berkenan hadir
+    dan menjadi bagian dari hari istimewa kami.
+  </p>
 </section>
+
+<div class="ornamen">❖ ❖ ❖</div>
 
 <!-- AYAT -->
 <section>
@@ -172,40 +195,45 @@ a{color:#b89b5e;text-decoration:none}
     لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً
     <br><br>
     “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu
-    pasangan hidup dari jenismu sendiri,
-    agar kamu merasa tenteram kepadanya,
+    pasangan hidup dari jenismu sendiri, agar kamu merasa tenteram kepadanya,
     dan Dia menjadikan di antaramu rasa kasih dan sayang.”
     <br><strong>(QS. Ar-Rum : 21)</strong>
   </blockquote>
 </section>
 
+<div class="ornamen">❖ ❖ ❖</div>
+
 <!-- MEMPELAI -->
 <section>
   <h2>Mempelai</h2>
-  <p class="center">Dengan penuh rasa syukur, kami mempersembahkan kedua mempelai:</p>
   <div class="card center">
     <h3>Nurul Absor</h3>
-    <p>Putra Kedua dari pasangan<br><strong>Ahmad Ihsan</strong> & <strong>Laila Khamdanah</strong></p>
-    <br>
+    <p>Putra Kedua dari Bapak Ahmad Ihsan & Ibu Laila Khamdanah</p><br>
     <h3>Fina Azanur Laila Fatimatuz Zahro</h3>
-    <p>Putri Pertama dari pasangan<br><strong>Usman Rustamaji</strong> & <strong>Roisah</strong></p>
+    <p>Putri Pertama dari Bapak Usman Rustamaji & Ibu Roisah</p>
   </div>
+</section>
+
+<!-- DOA NIKAH -->
+<section>
+  <h2>Doa Pernikahan</h2>
+  <blockquote class="center" style="font-family:'Amiri',serif;font-size:22px">
+    بَارَكَ اللهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ
+  </blockquote>
+  <p class="center">
+    “Semoga Allah memberkahi kalian berdua, memberkahi pernikahan kalian,
+    dan mempersatukan kalian berdua dalam kebaikan.”
+  </p>
 </section>
 
 <!-- COUNTDOWN -->
 <section>
   <h2>Menuju Hari Bahagia</h2>
-  <p class="center">
-    InsyaAllah, dengan penuh keyakinan dan harapan,
-    kami menantikan hari istimewa
-    di mana dua hati dipersatukan
-    dalam ikatan suci pernikahan.
-  </p>
   <div class="countdown">
-    <div class="cd"><span id="d">00</span><br><small>Hari</small></div>
-    <div class="cd"><span id="h">00</span><br><small>Jam</small></div>
-    <div class="cd"><span id="m">00</span><br><small>Menit</small></div>
-    <div class="cd"><span id="s">00</span><br><small>Detik</small></div>
+    <div class="cd"><span id="d">00</span><small>Hari</small></div>
+    <div class="cd"><span id="h">00</span><small>Jam</small></div>
+    <div class="cd"><span id="m">00</span><small>Menit</small></div>
+    <div class="cd"><span id="s">00</span><small>Detik</small></div>
   </div>
 </section>
 
@@ -213,127 +241,35 @@ a{color:#b89b5e;text-decoration:none}
 <section>
   <h2>Akad & Resepsi</h2>
   <div class="card center">
-    <p><strong>Akad Nikah</strong><br>Rabu, 28 Januari 2026<br>Pukul 09.00 WIB</p>
+    <p><strong>🕘 Akad Nikah</strong><br>
+      Rabu, 28 Januari 2026<br>
+      <span id="tanggalHijriah"></span><br>
+      <span id="tanggalJawa"></span><br>
+      Pukul 09.00 WIB
+    </p>
     <hr>
-    <p><strong>Resepsi Pernikahan</strong><br>Pukul 10.00 WIB – Selesai</p>
-    <p>
-      Dusun Kali Bawo, Kelurahan Badak<br>
-      Kecamatan Belik, Kabupaten Pemalang
+    <p><strong>🕙 Resepsi Pernikahan</strong><br>
+      Pukul 10.00 WIB – Selesai
     </p>
-    <p class="center">
-      Merupakan suatu kehormatan dan kebahagiaan bagi kami
-      apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.
-    </p>
+    <p>Dusun Kali Bawo, Kelurahan Badak<br>Kecamatan Belik, Kabupaten Pemalang</p>
   </div>
 </section>
 
-<!-- MAPS -->
+<!-- MAP -->
 <section>
   <h2>Lokasi Acara</h2>
   <div class="card">
-    <iframe 
-      src="https://www.google.com/maps?q=-7.176419,109.404790&output=embed"
-      width="100%" height="300" style="border-radius:15px;border:0" loading="lazy">
-    </iframe>
+    <iframe src="https://www.google.com/maps?q=-7.176419,109.404790&output=embed"
+      width="100%" height="300" style="border-radius:15px;border:0"></iframe>
   </div>
 </section>
 
-<!-- CERITA -->
-<section>
-  <h2>Cerita Kami</h2>
-  <div class="card timeline">
-    <div>
-      <strong>Awal Pertemuan</strong>
-      <p>
-        Tidak ada yang kebetulan di dunia ini.
-        Semua telah Allah susun dengan sebaik-baiknya.
-        Kami dipertemukan pada waktu terbaik menurut-Nya.
-      </p>
-    </div>
-    <div>
-      <strong>Lamaran</strong>
-      <p>
-        Setelah melalui proses saling mengenal dan memahami,
-        dengan restu orang tua dan keluarga,
-        kami mantap melangkah ke jenjang yang lebih serius
-        pada tanggal 03 April 2025.
-      </p>
-    </div>
-    <div>
-      <strong>Pernikahan</strong>
-      <p>
-        Dengan memohon ridho Allah SWT,
-        kami siap memulai perjalanan baru
-        sebagai pasangan suami istri,
-        saling menguatkan, saling menjaga,
-        dan berjalan bersama hingga akhir hayat.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- GALERI -->
-<section>
-  <h2>Galeri Foto</h2>
-  <p class="center">
-    Setiap foto adalah potongan cerita,
-    setiap senyuman adalah doa
-    yang kami simpan dengan penuh rasa syukur.
-  </p>
-  <div class="gallery">
-    <img src="assets/foto1.jpg">
-    <img src="assets/foto2.jpg">
-    <img src="assets/foto1.jpg">
-  </div>
-</section>
-
-<!-- RSVP -->
-<section>
-  <h2>RSVP & Ucapan</h2>
-  <p class="center">
-    Kami sangat berbahagia apabila Bapak/Ibu/Saudara/i
-    berkenan menyampaikan doa dan ucapan terbaik
-    serta mengonfirmasi kehadiran melalui form berikut.
-  </p>
-  <div class="card">
-    <input id="rsvpName" placeholder="Nama Anda">
-    <select id="rsvpStatus">
-      <option>Hadir</option>
-      <option>Tidak Hadir</option>
-    </select>
-    <textarea id="rsvpMsg" placeholder="Ucapan & Doa"></textarea>
-    <button onclick="sendRSVP()">Kirim via WhatsApp</button>
-  </div>
-</section>
-
-<!-- AMPLOP -->
-<section>
-  <h2>Amplop Digital</h2>
-  <div class="card center">
-    <p>
-      Doa restu Bapak/Ibu/Saudara/i merupakan hadiah yang paling berharga bagi kami.
-      Namun apabila berkenan memberikan tanda kasih, dapat disampaikan melalui:
-    </p>
-    <p><strong>Bank BRI</strong></p>
-    <strong id="rek">734801009678536</strong><br>
-    <small>a.n Nurul Absor</small><br><br>
-    <button onclick="copyRek()">Salin Rekening</button>
-  </div>
-</section>
-
-<!-- PENUTUP -->
 <footer>
   Merupakan suatu kehormatan dan kebahagiaan bagi kami
   apabila Bapak/Ibu/Saudara/i berkenan hadir
-  dan memberikan doa restu untuk kami.
+  dan memberikan doa restu.
   <br><br>
-  Semoga Allah Subhanahu Wa Ta’ala senantiasa melimpahkan
-  rahmat dan keberkahan, menjadikan pernikahan ini
-  sebagai ibadah yang penuh makna,
-  serta keluarga yang sakinah, mawaddah, warahmah.
-  <br><br>
-  <strong>Wassalamu’alaikum Warahmatullahi Wabarakatuh</strong>
-  <br><br>
+  <strong>Wassalamu’alaikum Warahmatullahi Wabarakatuh</strong><br><br>
   <strong>Nurul Absor & Fina Azanur Laila Fatimatuz Zahro 🤍</strong>
 </footer>
 
@@ -342,56 +278,44 @@ a{color:#b89b5e;text-decoration:none}
 <script>
 const bgm=document.getElementById("bgm");
 let playing=false;
+function openInvite(){hero.style.display="none";content.style.display="block";bgm.play();playing=true;}
+function toggleMusic(){playing?bgm.pause():bgm.play();playing=!playing;}
+function toggleDark(){document.body.classList.toggle("dark");}
 
-function openInvite(){
-  hero.style.display="none";
-  content.style.display="block";
-  bgm.play(); playing=true;
-}
-
-function toggleMusic(){
-  playing?bgm.pause():bgm.play();
-  playing=!playing;
-}
-
-function toggleDark(){
-  document.body.classList.toggle("dark");
-}
-
-// Nama tamu
+// nama tamu
 const p=new URLSearchParams(location.search);
-if(p.get("to")) guest.innerText=p.get("to").replace(/\+/g," ");
+if(p.get("to")){
+  const n=p.get("to").replace(/\+/g," ");
+  guest.innerText=n;
+  personalMessage.innerText=`Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila ${n} berkenan hadir dan memberikan doa restu.`;
+}
 
-// Countdown
+// countdown
 const target=new Date("2026-01-28T09:00:00+07:00").getTime();
 setInterval(()=>{
-  const diff=target-Date.now();
-  if(diff<=0)return;
+  const diff=target-Date.now(); if(diff<=0)return;
   d.innerText=Math.floor(diff/86400000);
   h.innerText=Math.floor(diff/3600000)%24;
   m.innerText=Math.floor(diff/60000)%60;
   s.innerText=Math.floor(diff/1000)%60;
 },1000);
 
-// RSVP WhatsApp (GANTI NOMOR WA)
-function sendRSVP(){
-  const text=`Assalamu’alaikum,
-Nama: ${rsvpName.value}
-Konfirmasi Kehadiran: ${rsvpStatus.value}
+// hijriah
+const acara=new Date("2026-01-28T09:00:00+07:00");
+const hij=new Intl.DateTimeFormat('id-TN-u-ca-islamic',{day:'numeric',month:'long',year:'numeric'});
+tanggalHijriah.innerText=hij.format(acara)+" H";
 
-Ucapan & Doa:
-${rsvpMsg.value}`;
-  window.open(
-    `https://wa.me/6283890194095?text=${encodeURIComponent(text)}`,
-    "_blank"
-  );
-}
+// jawa
+const hari=["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
+const pasaran=["Legi","Pahing","Pon","Wage","Kliwon"];
+const ref=new Date(1970,0,1);
+const diff=Math.floor((acara-ref)/86400000);
+tanggalJawa.innerText=`${hari[acara.getDay()]} ${pasaran[diff%5]}`;
 
-// Copy rekening
-function copyRek(){
-  navigator.clipboard.writeText(rek.innerText);
-  alert("Nomor rekening berhasil disalin 🤍");
-}
+// fokus scroll
+const secs=document.querySelectorAll("section");
+const obs=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("active")),{threshold:.4});
+secs.forEach(s=>obs.observe(s));
 </script>
 
 </body>
