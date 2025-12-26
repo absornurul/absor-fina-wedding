@@ -106,4 +106,13 @@ button {
   position: relative;
   z-index: 10;
 }
+.fade-up{
+  opacity:0;
+  transform:translateY(30px);
+  transition:1s ease;
+}
+.fade-up.active{
+  opacity:1;
+  transform:translateY(0);
+}
 
