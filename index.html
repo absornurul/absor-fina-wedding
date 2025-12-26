@@ -5,213 +5,64 @@
 <title>The Wedding of Absor & Fina</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- GOOGLE FONTS -->
+<meta name="description" content="Undangan Pernikahan Nurul Absor & Fina Azanur Laila Fatimatuz Zahro, Rabu 28 Januari 2026 di Pemalang.">
+<meta property="og:title" content="The Wedding of Absor & Fina">
+<meta property="og:description" content="Undangan Pernikahan Nurul Absor & Fina">
+<meta property="og:image" content="assets/foto1.jpg">
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@500;600&family=Amiri&display=swap" rel="stylesheet">
 
 <style>
-/* ================== BASIC ================== */
 *{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:'Poppins',sans-serif;
-  background:#faf8f3;
-  color:#333;
-  overflow-x:hidden;
-}
-section{
-  padding:80px 20px;
-  max-width:960px;
-  margin:auto;
-}
-h1,h2,h3{
-  font-family:'Playfair Display',serif;
-  text-align:center;
-}
+body{margin:0;font-family:'Poppins',sans-serif;background:#faf8f3;color:#333}
+section{padding:70px 20px;max-width:950px;margin:auto}
+h1,h2,h3{font-family:'Playfair Display',serif;text-align:center}
 .center{text-align:center}
+.card{background:#fff;border-radius:26px;padding:40px;margin-top:30px;box-shadow:0 18px 45px rgba(184,155,94,.25)}
 
-/* ================== HERO CINEMATIC ================== */
 .hero{
   min-height:100vh;
-  background:
-    linear-gradient(rgba(255,255,255,.65),rgba(255,255,255,.65)),
-    url("assets/foto1.jpg") center/cover no-repeat;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  animation:cinematic 20s ease-in-out infinite alternate;
+  background:linear-gradient(rgba(255,255,255,.75),rgba(255,255,255,.75)),
+  url("assets/foto1.jpg") center/cover no-repeat;
+  display:flex;align-items:center;justify-content:center
 }
-@keyframes cinematic{
-  from{background-size:105%}
-  to{background-size:118%}
-}
-.hero-box{
-  background:rgba(255,255,255,.95);
-  padding:45px 35px;
-  border-radius:30px;
-  text-align:center;
-  max-width:540px;
-  box-shadow:0 25px 60px rgba(0,0,0,.15);
-}
-.hero-box h1{
-  font-size:13px;
-  letter-spacing:5px;
-  color:#b89b5e;
-}
-.hero-box h2{
-  font-size:28px;
-  margin:18px 0;
-}
-.hero-box p{font-size:15px}
+.hero-box{background:#fff;padding:50px 35px;border-radius:30px;max-width:520px;text-align:center}
+.hero-box h1{font-size:13px;letter-spacing:4px;color:#b89b5e}
+.hero-box h2{font-size:26px;margin:18px 0}
 
-/* ================== BUTTON ================== */
-button{
-  padding:15px 38px;
-  border:none;
-  border-radius:35px;
-  background:linear-gradient(135deg,#d6b36a,#b89b5e);
-  color:#fff;
-  font-size:15px;
-  cursor:pointer;
-}
+button{padding:14px 38px;border:none;border-radius:30px;background:linear-gradient(135deg,#d6b36a,#b89b5e);color:#fff;font-size:15px;cursor:pointer}
 
-/* ================== CARD ================== */
-.card{
-  background:#fff;
-  border-radius:26px;
-  padding:35px;
-  margin-top:35px;
-  box-shadow:0 18px 45px rgba(0,0,0,.07);
-}
+blockquote{font-family:'Amiri',serif;font-size:21px;text-align:center}
 
-/* ================== AYAT ================== */
-blockquote{
-  font-family:'Amiri',serif;
-  font-size:22px;
-  text-align:center;
-  line-height:1.9;
-}
+.countdown{display:flex;justify-content:center;gap:15px;margin-top:30px;flex-wrap:wrap}
+.time-box{width:85px;height:105px;background:#fff;border-radius:20px;display:flex;flex-direction:column;justify-content:center;align-items:center;box-shadow:0 15px 35px rgba(184,155,94,.3)}
+.time-box span{font-size:28px;font-weight:600;color:#b89b5e}
+.time-box small{font-size:12px;color:#777}
 
-/* ================== COUNTDOWN LUX ================== */
-.countdown{
-  display:flex;
-  justify-content:center;
-  gap:16px;
-  margin-top:35px;
-  flex-wrap:wrap;
-}
-.time-box{
-  background:rgba(255,255,255,.9);
-  border:1px solid #e6d8b3;
-  border-radius:20px;
-  width:90px;
-  padding:20px 10px;
-  text-align:center;
-  box-shadow:0 12px 30px rgba(184,155,94,.25);
-  backdrop-filter:blur(6px);
-}
-.time-box span{
-  display:block;
-  font-size:30px;
-  font-weight:600;
-  color:#b89b5e;
-}
-.time-box small{
-  font-size:12px;
-  letter-spacing:1px;
-  color:#777;
-}
+.timeline{border-left:3px solid #b89b5e;padding-left:20px}
+.timeline div{margin-bottom:25px}
 
-/* ================== TIMELINE ================== */
-.timeline{
-  border-left:3px solid #b89b5e;
-  padding-left:25px;
-}
-.timeline div{margin-bottom:28px}
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.gallery img{width:100%;border-radius:18px}
 
-/* ================== GALLERY ================== */
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-}
-.gallery img{
-  width:100%;
-  border-radius:18px;
-  cursor:pointer;
-}
+.music-btn{position:fixed;bottom:20px;right:20px;width:55px;height:55px;border-radius:50%;border:none;background:#b89b5e;color:#fff;font-size:20px;box-shadow:0 10px 25px rgba(0,0,0,.3);z-index:999}
 
-/* ================== LIGHTBOX ================== */
-#lightbox{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.92);
-  z-index:1000;
-}
-#lightbox img{
-  max-width:90%;
-  max-height:90%;
-  margin:5% auto;
-  display:block;
-}
+.reveal{opacity:0;transform:translateY(30px);transition:.8s ease}
+.reveal.active{opacity:1;transform:none}
 
-/* ================== FIXED BUTTON ================== */
-.fixed-btn{
-  position:fixed;
-  right:20px;
-  width:52px;
-  height:52px;
-  border-radius:50%;
-  border:none;
-  font-size:20px;
-  z-index:999;
-}
-#musicBtn{bottom:20px;background:#b89b5e;color:#fff}
-
-/* ================== WATERMARK ================== */
-#watermark{
-  position:fixed;
-  bottom:10px;
-  left:10px;
-  font-size:11px;
-  opacity:.35;
-  color:#b89b5e;
-  pointer-events:none;
-}
-
-/* ================== PETALS ================== */
-.petals{
-  position:fixed;
-  inset:0;
-  background:url("assets/petal.png");
-  opacity:.35;
-  animation:fall 28s linear infinite;
-  pointer-events:none;
-}
-@keyframes fall{
-  from{background-position:0 0}
-  to{background-position:0 2200px}
-}
-
-/* ================== FOOTER ================== */
-footer{
-  text-align:center;
-  padding:60px 20px;
-  color:#b89b5e;
-}
+footer{text-align:center;padding:50px 20px;color:#b89b5e}
+a{color:#b89b5e;text-decoration:none;font-weight:500}
 </style>
 </head>
 
 <body>
 
-<div class="petals"></div>
-<div id="watermark"></div>
-
 <audio id="bgm" loop>
   <source src="assets/music.mp3" type="audio/mpeg">
 </audio>
+<button class="music-btn" onclick="toggleMusic()">🎵</button>
 
-<!-- HERO -->
+<!-- COVER -->
 <div class="hero" id="hero">
   <div class="hero-box">
     <h1>THE WEDDING OF</h1>
@@ -223,27 +74,19 @@ footer{
 
 <div id="content" style="display:none">
 
-<section class="center">
+<section class="center reveal">
   <p>Kepada Yth:</p>
   <h3 id="guest">Bapak/Ibu/Saudara/i</h3>
-  <p>
-    Dengan memohon rahmat dan ridho Allah SWT,<br>
-    kami mengundang Bapak/Ibu/Saudara/i<br>
-    untuk hadir dan memberikan doa restu.
-  </p>
 </section>
 
-<section>
+<section class="reveal">
   <blockquote>
-    وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا
-    لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً
-    <br><br>
-    “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan pasangan hidup…”
-    <br><strong>(QS. Ar-Rum : 21)</strong>
+    “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup…”
+    <br><strong>QS. Ar-Rum : 21</strong>
   </blockquote>
 </section>
 
-<section>
+<section class="reveal">
   <h2>Mempelai</h2>
   <div class="card center">
     <h3>Nurul Absor</h3>
@@ -253,44 +96,54 @@ footer{
   </div>
 </section>
 
-<section>
+<section class="reveal">
   <h2>Menuju Hari Bahagia</h2>
-  <div class="countdown" id="countdownBox">
-    <div class="time-box"><span id="cd-d">00</span><small>Hari</small></div>
-    <div class="time-box"><span id="cd-h">00</span><small>Jam</small></div>
-    <div class="time-box"><span id="cd-m">00</span><small>Menit</small></div>
-    <div class="time-box"><span id="cd-s">00</span><small>Detik</small></div>
+  <div class="countdown">
+    <div class="time-box"><span id="cd_d">00</span><small>Hari</small></div>
+    <div class="time-box"><span id="cd_h">00</span><small>Jam</small></div>
+    <div class="time-box"><span id="cd_m">00</span><small>Menit</small></div>
+    <div class="time-box"><span id="cd_s">00</span><small>Detik</small></div>
   </div>
 </section>
 
-<section>
+<section class="reveal">
+  <h2>Akad & Resepsi</h2>
+  <div class="card center">
+    <p><strong>Akad Nikah</strong><br>Rabu, 28 Januari 2026<br>09.00 WIB</p>
+    <hr>
+    <p><strong>Resepsi</strong><br>10.00 WIB – Selesai</p>
+    <p>Dusun Kali Bawo, Belik, Pemalang</p>
+    <a href="https://maps.google.com/?q=-7.176419,109.404790" target="_blank">Lihat Google Maps</a>
+  </div>
+</section>
+
+<section class="reveal">
   <h2>Cerita Kami</h2>
   <div class="card timeline">
-    <div><strong>Awal Bertemu</strong><p>Allah mempertemukan kami di waktu terbaik.</p></div>
-    <div><strong>Lamaran</strong><p>03 April 2025 menjadi langkah serius kami.</p></div>
-    <div><strong>Pernikahan</strong><p>Janji suci kami ikrarkan sebagai ibadah.</p></div>
+    <div><strong>Awal Bertemu</strong><p>Allah mempertemukan kami.</p></div>
+    <div><strong>Lamaran</strong><p>03 April 2025</p></div>
+    <div><strong>Pernikahan</strong><p>Janji suci sebagai ibadah.</p></div>
   </div>
 </section>
 
-<section>
+<section class="reveal">
   <h2>Galeri Foto</h2>
   <div class="gallery">
-    <img src="assets/foto1.jpg" onclick="openImg(this.src)">
-    <img src="assets/foto2.jpg" onclick="openImg(this.src)">
-    <img src="assets/foto1.jpg" onclick="openImg(this.src)">
-    <img src="assets/foto2.jpg" onclick="openImg(this.src)">
+    <img src="assets/foto1.jpg">
+    <img src="assets/foto2.jpg">
+    <img src="assets/foto1.jpg">
+    <img src="assets/foto2.jpg">
   </div>
 </section>
 
-<section>
-  <h2>Konfirmasi Kehadiran & Ucapan</h2>
+<section class="reveal">
+  <h2>RSVP</h2>
   <div class="card center">
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdiHBoXnAtuZZNe39mjOLYsV76obkObexayuRsIDNr3UYHRWg/viewform?embedded=true"
-    width="100%" height="700" frameborder="0"></iframe>
+    <iframe src="https://docs.google.com/forms/" width="100%" height="600" frameborder="0"></iframe>
   </div>
 </section>
 
-<section>
+<section class="reveal">
   <h2>Amplop Digital</h2>
   <div class="card center">
     <p>Bank BRI</p>
@@ -301,46 +154,49 @@ footer{
 </section>
 
 <footer>
-  Wassalamu’alaikum Warahmatullahi Wabarakatuh<br>
-  <strong>Nurul Absor & Fina Azanur Laila Fatimatuz Zahro 🤍</strong>
+  Terima kasih atas doa dan restu Bapak/Ibu/Saudara/i<br><br>
+  <strong>Absor & Fina 🤍</strong>
 </footer>
 
 </div>
 
-<div id="lightbox" onclick="this.style.display='none'">
-  <img id="lightImg">
-</div>
-
-<button id="musicBtn" class="fixed-btn" onclick="toggleMusic()">♫</button>
-
 <script>
-let musicOn=false;
-const bgm=document.getElementById("bgm");
-
 function openInvite(){
   hero.style.display="none";
   content.style.display="block";
-  bgm.play(); musicOn=true;
+  bgm.play();
 }
-function toggleMusic(){musicOn?bgm.pause():bgm.play();musicOn=!musicOn}
-function copyRek(){navigator.clipboard.writeText("734801009678536");alert("Nomor rekening disalin")}
-function openImg(src){lightbox.style.display="block";lightImg.src=src}
+
+function toggleMusic(){
+  bgm.paused?bgm.play():bgm.pause();
+}
+
+function copyRek(){
+  navigator.clipboard.writeText("734801009678536");
+  alert("Nomor rekening disalin");
+}
 
 const p=new URLSearchParams(location.search);
-if(p.get("to")){
-  guest.innerText=p.get("to").replace(/\+/g," ");
-  watermark.innerText="Undangan untuk: "+guest.innerText;
-}
+if(p.get("to")) guest.innerText=p.get("to").replace(/\+/g," ");
 
 const target=new Date("2026-01-28T09:00:00").getTime();
 setInterval(()=>{
-  const diff=target-new Date().getTime();
-  if(diff<=0){countdownBox.innerHTML="<h3>Hari Ini 💍</h3>";return;}
+  const diff=target-Date.now();
+  if(diff<=0) return;
   cd_d.innerText=Math.floor(diff/86400000);
   cd_h.innerText=Math.floor(diff/3600000)%24;
   cd_m.innerText=Math.floor(diff/60000)%60;
   cd_s.innerText=Math.floor(diff/1000)%60;
 },1000);
+
+const reveals=document.querySelectorAll(".reveal");
+window.addEventListener("scroll",()=>{
+  reveals.forEach(el=>{
+    if(el.getBoundingClientRect().top < window.innerHeight-50){
+      el.classList.add("active");
+    }
+  });
+});
 </script>
 
 </body>
