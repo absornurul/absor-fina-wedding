@@ -1,45 +1,265 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>The Wedding Of Absor & Fina</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>The Wedding Of Absor & Fina</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- PAKAI CSS FILE -->
-  <link rel="stylesheet" href="style.css">
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', Arial, sans-serif;
+  background: #faf8f3;
+  color: #333;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.75)),
+    url("assets/foto1.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.overlay {
+  background: rgba(255,255,255,0.9);
+  padding: 40px 30px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 520px;
+  width: 100%;
+}
+
+.overlay h1 {
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: #b89b5e;
+}
+
+.overlay h2 {
+  font-size: 24px;
+  margin: 12px 0;
+  line-height: 1.4;
+}
+
+.overlay p {
+  font-size: 14px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 14px 36px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #d6b36a, #b89b5e);
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* CONTENT */
+#content {
+  display: none;
+  padding: 40px 20px;
+  max-width: 720px;
+  margin: auto;
+}
+
+.tamu {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+blockquote {
+  font-style: italic;
+  text-align: center;
+  margin: 30px 0;
+}
+
+.event {
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  margin: 25px 0;
+  text-align: center;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.music-control {
+  text-align: right;
+}
+
+.music-control button {
+  background: #eee;
+  color: #333;
+  font-size: 13px;
+  padding: 8px 14px;
+}
+
+.rsvp {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 12px 22px;
+  background: #25D366;
+  color: #fff;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.names {
+  text-align: center;
+  margin-top: 40px;
+  font-weight: 600;
+  color: #b89b5e;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- HERO -->
-  <div class="hero" id="hero">
-    <div class="overlay">
-      <h1>THE WEDDING OF</h1>
-      <h2>
-        Nurul Absor<br>&<br>
-        Fina Azanur Laila Fatimatuz Zahro
-      </h2>
-      <p>Rabu, 28 Januari 2026</p>
-      <button id="btnOpen">Buka Undangan</button>
+<!-- AUDIO -->
+<audio id="bgMusic" loop>
+  <source src="assets/musik.mp3" type="audio/mpeg">
+</audio>
+
+<!-- HERO -->
+<div class="hero" id="hero">
+  <div class="overlay">
+    <h1>THE WEDDING OF</h1>
+    <h2>
+      Nurul Absor<br>&<br>
+      Fina Azanur Laila Fatimatuz Zahro
+    </h2>
+    <p>Rabu, 28 Januari 2026</p>
+    <button id="btnOpen">Buka Undangan</button>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div id="content">
+
+  <div class="music-control">
+    <button id="btnMusic">🔊 Musik</button>
+  </div>
+
+  <div class="tamu">
+    <p>Kepada Yth:<br><strong id="guest">Tamu Undangan</strong></p>
+  </div>
+
+  <blockquote>
+    “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup…”
+    <br><strong>QS. Ar-Rum : 21</strong>
+  </blockquote>
+
+  <div class="event">
+    <h3>Menuju Hari Bahagia</h3>
+    <p id="countdown">Loading...</p>
+  </div>
+
+  <div class="event">
+    <h3>Akad Nikah</h3>
+    <p>Rabu, 28 Januari 2026<br>09.00 WIB</p>
+  </div>
+
+  <div class="event">
+    <h3>Resepsi</h3>
+    <p>10.00 WIB – Selesai</p>
+    <p>
+      Dusun Kali Bawo, Kelurahan Badak<br>
+      Kecamatan Belik, Kabupaten Pemalang
+    </p>
+    <a href="https://maps.google.com/?q=-7.176419,109.404790" target="_blank">
+      Lihat Google Maps
+    </a>
+  </div>
+
+  <div class="event">
+    <h3>Galeri Foto</h3>
+    <div class="gallery">
+      <img src="assets/foto1.jpg">
+      <img src="assets/foto2.jpg">
     </div>
   </div>
 
-  <!-- CONTENT -->
-  <div class="content" id="content">
+  <div class="event">
+    <h3>Konfirmasi Kehadiran</h3>
+    <a class="rsvp" href="https://wa.me/6283890194095" target="_blank">
+      RSVP via WhatsApp
+    </a>
+  </div>
 
-    <div class="tamu">
-      <p>Kepada Yth:<br><strong id="guest">Tamu Undangan</strong></p>
-    </div>
+  <div class="names">
+    Absor & Fina 🤍
+  </div>
 
-    <blockquote>
-      “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup…”
-      <br><strong>QS. Ar-Rum : 21</strong>
-    </blockquote>
+</div>
 
-    <div class="event">
-      <h3>Akad Nikah</h3>
-      <p>Rabu, 28 Januari 2026<br>09.00 WIB</p>
-    </div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const hero = document.getElementById("hero");
+  const content = document.getElementById("content");
+  const btnOpen = document.getElementById("btnOpen");
+  const audio = document.getElementById("bgMusic");
+  const btnMusic = document.getElementById("btnMusic");
 
-    <div class="event">
-      <h3
+  btnOpen.addEventListener("click", function () {
+    hero.style.display = "none";
+    content.style.display = "block";
+    audio.play();
+    window.scrollTo(0, 0);
+  });
+
+  btnMusic.addEventListener("click", function () {
+    if (audio.paused) {
+      audio.play();
+      btnMusic.innerText = "🔊 Musik";
+    } else {
+      audio.pause();
+      btnMusic.innerText = "🔇 Musik";
+    }
+  });
+
+  const params = new URLSearchParams(window.location.search);
+  const guest = params.get("to");
+  if (guest) {
+    document.getElementById("guest").innerText = guest.replace(/\+/g, " ");
+  }
+
+  const target = new Date("2026-01-28T09:00:00").getTime();
+  const countdown = document.getElementById("countdown");
+
+  setInterval(() => {
+    const now = new Date().getTime();
+    const diff = target - now;
+
+    if (diff <= 0) {
+      countdown.innerText = "Hari ini 💍";
+      return;
+    }
+
+    const d = Math.floor(diff / (1000*60*60*24));
+    const h = Math.floor((diff / (1000*60*60)) % 24);
+    const m = Math.floor((diff / (1000*60)) % 60);
+
+    countdown.innerText = `${d} hari ${h} jam ${m} menit`;
+  }, 1000);
+});
+</script>
+
+</body>
+</html>
