@@ -244,13 +244,24 @@ function openInvite(){hero.style.display="none";content.style.display="block";bg
 function toggleMusic(){playing?bgm.pause():bgm.play();playing=!playing;}
 function toggleDark(){document.body.classList.toggle("dark");}
 
-// Nama tamu
-const p=new URLSearchParams(location.search);
-if(p.get("to")){
-  const n=p.get("to").replace(/\+/g," ");
-  guest.innerText=n;
-  personalMessage.innerText=`Merupakan suatu kehormatan bagi kami apabila ${n} berkenan hadir.`;
-}
+<!-- RSVP -->
+<section>
+  <h2>RSVP & Ucapan</h2>
+  <p class="center">
+    Kami sangat berbahagia apabila Bapak/Ibu/Saudara/i
+    berkenan menyampaikan doa dan ucapan terbaik
+    serta mengonfirmasi kehadiran melalui form berikut.
+  </p>
+  <div class="card">
+    <input id="rsvpName" placeholder="Nama Anda">
+    <select id="rsvpStatus">
+      <option>Hadir</option>
+      <option>Tidak Hadir</option>
+    </select>
+    <textarea id="rsvpMsg" placeholder="Ucapan & Doa"></textarea>
+    <button onclick="sendRSVP()">Kirim via WhatsApp</button>
+  </div>
+</section>
 
 // Countdown
 const target=new Date("2026-01-28T09:00:00+07:00").getTime();
@@ -302,8 +313,7 @@ ${rsvpMsg.value}`;
     "_blank"
   );
 }
-  
-})
+
 .catch(()=>bukuTamu.innerHTML="<p class='center'>Ucapan akan segera tampil 🤍</p>");
 </script>
 
