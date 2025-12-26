@@ -2,45 +2,93 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>The Wedding Of Absor & Fina</title>
+  <title>Undangan Absor & Fina</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
       margin: 0;
-      font-family: 'Poppins', Arial, sans-serif;
+      font-family: Arial, sans-serif;
       background: #faf8f3;
       color: #333;
+      text-align: center;
     }
 
     .hero {
       min-height: 100vh;
-      background-image:
-        linear-gradient(
-          rgba(255,255,255,0.65),
-          rgba(255,255,255,0.65)
-        ),
-        url("assets/foto1.jpg");
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
+      background: #e9e4d8;
       padding: 20px;
     }
 
-    .overlay {
-      background: rgba(255,255,255,0.9);
-      padding: 40px 30px;
-      border-radius: 20px;
-      text-align: center;
-      max-width: 520px;
+    .box {
+      background: white;
+      padding: 30px 25px;
+      border-radius: 15px;
+      max-width: 500px;
       width: 100%;
     }
 
-    .overlay h1 {
-      font-size: 13px;
+    h1 {
+      font-size: 14px;
       letter-spacing: 3px;
       color: #b89b5e;
-      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin: 10px 0;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 25px;
+      background: #b89b5e;
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .content {
+      display: none;
+      padding: 30px 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="hero">
+  <div class="box">
+    <h1>THE WEDDING OF</h1>
+    <h2>Nurul Absor<br>&<br>Fina Azanur Laila Fatimatuz Zahro</h2>
+    <p>Rabu, 28 Januari 2026</p>
+    <button onclick="buka()">Buka Undangan</button>
+  </div>
+</div>
+
+<div class="content" id="content">
+  <h3>Akad Nikah</h3>
+  <p>09.00 WIB</p>
+
+  <h3>Resepsi</h3>
+  <p>10.00 WIB – Selesai</p>
+
+  <p>Dusun Kali Bawo, Kelurahan Badak<br>
+     Kecamatan Belik, Kabupaten Pemalang</p>
+
+  <p><strong>Absor & Fina 🤍</strong></p>
+</div>
+
+<script>
+  function buka() {
+    document.querySelector('.hero').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
