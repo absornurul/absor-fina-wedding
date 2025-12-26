@@ -5,58 +5,145 @@
 <title>The Wedding of Absor & Fina</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Undangan Pernikahan Nurul Absor & Fina Azanur Laila Fatimatuz Zahro, Rabu 28 Januari 2026 di Pemalang.">
-<meta property="og:title" content="The Wedding of Absor & Fina">
-<meta property="og:description" content="Undangan Pernikahan Nurul Absor & Fina">
-<meta property="og:image" content="assets/foto1.jpg">
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@500;600&family=Amiri&display=swap" rel="stylesheet">
 
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:'Poppins',sans-serif;background:#faf8f3;color:#333}
-section{padding:70px 20px;max-width:950px;margin:auto}
-h1,h2,h3{font-family:'Playfair Display',serif;text-align:center}
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:#faf8f3;
+  color:#333;
+}
+section{
+  padding:60px 20px;
+  max-width:900px;
+  margin:auto;
+}
+h1,h2,h3{
+  font-family:'Playfair Display',serif;
+  text-align:center;
+}
 .center{text-align:center}
-.card{background:#fff;border-radius:26px;padding:40px;margin-top:30px;box-shadow:0 18px 45px rgba(184,155,94,.25)}
 
 .hero{
   min-height:100vh;
-  background:linear-gradient(rgba(255,255,255,.75),rgba(255,255,255,.75)),
-  url("assets/foto1.jpg") center/cover no-repeat;
-  display:flex;align-items:center;justify-content:center
+  background:
+    linear-gradient(rgba(255,255,255,.75),rgba(255,255,255,.75)),
+    url("assets/foto1.jpg") center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
-.hero-box{background:#fff;padding:50px 35px;border-radius:30px;max-width:520px;text-align:center}
-.hero-box h1{font-size:13px;letter-spacing:4px;color:#b89b5e}
-.hero-box h2{font-size:26px;margin:18px 0}
+.hero-box{
+  background:#fff;
+  padding:45px 35px;
+  border-radius:26px;
+  text-align:center;
+  max-width:520px;
+}
+.hero-box h1{
+  font-size:13px;
+  letter-spacing:4px;
+  color:#b89b5e;
+}
+.hero-box h2{
+  font-size:26px;
+  margin:15px 0;
+}
 
-button{padding:14px 38px;border:none;border-radius:30px;background:linear-gradient(135deg,#d6b36a,#b89b5e);color:#fff;font-size:15px;cursor:pointer}
+button{
+  padding:14px 38px;
+  border:none;
+  border-radius:30px;
+  background:#b89b5e;
+  color:#fff;
+  font-size:15px;
+  cursor:pointer;
+}
 
-blockquote{font-family:'Amiri',serif;font-size:21px;text-align:center}
+/* CARD */
+.card{
+  background:#fff;
+  border-radius:22px;
+  padding:35px;
+  margin-top:30px;
+  box-shadow:0 12px 30px rgba(0,0,0,.08);
+}
 
-.countdown{display:flex;justify-content:center;gap:15px;margin-top:30px;flex-wrap:wrap}
-.time-box{width:85px;height:105px;background:#fff;border-radius:20px;display:flex;flex-direction:column;justify-content:center;align-items:center;box-shadow:0 15px 35px rgba(184,155,94,.3)}
-.time-box span{font-size:28px;font-weight:600;color:#b89b5e}
-.time-box small{font-size:12px;color:#777}
+/* COUNTDOWN */
+.countdown{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-top:30px;
+}
+.time-box{
+  width:80px;
+  padding:18px 10px;
+  background:#fff;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(184,155,94,.25);
+}
+.time-box span{
+  font-size:26px;
+  font-weight:600;
+  color:#b89b5e;
+}
+.time-box small{
+  font-size:12px;
+  color:#777;
+}
 
-.timeline{border-left:3px solid #b89b5e;padding-left:20px}
-.timeline div{margin-bottom:25px}
+/* TIMELINE */
+.timeline{
+  border-left:3px solid #b89b5e;
+  padding-left:20px;
+}
+.timeline div{
+  margin-bottom:25px;
+}
 
-.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.gallery img{width:100%;border-radius:18px}
+/* GALERI */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+.gallery img{
+  width:100%;
+  border-radius:16px;
+}
 
-.music-btn{position:fixed;bottom:20px;right:20px;width:55px;height:55px;border-radius:50%;border:none;background:#b89b5e;color:#fff;font-size:20px;box-shadow:0 10px 25px rgba(0,0,0,.3);z-index:999}
+/* MUSIC */
+.music-btn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  border:none;
+  background:#b89b5e;
+  color:white;
+  font-size:20px;
+  box-shadow:0 8px 20px rgba(0,0,0,.3);
+  cursor:pointer;
+  z-index:999;
+}
 
-.reveal{opacity:0;transform:translateY(30px);transition:.8s ease}
-.reveal.active{opacity:1;transform:none}
-
-footer{text-align:center;padding:50px 20px;color:#b89b5e}
+footer{
+  text-align:center;
+  padding:50px 20px;
+  color:#b89b5e;
+}
 a{color:#b89b5e;text-decoration:none;font-weight:500}
 </style>
 </head>
 
 <body>
 
+<!-- AUDIO -->
 <audio id="bgm" loop>
   <source src="assets/music.mp3" type="audio/mpeg">
 </audio>
@@ -68,35 +155,36 @@ a{color:#b89b5e;text-decoration:none;font-weight:500}
     <h1>THE WEDDING OF</h1>
     <h2>Nurul Absor<br>&<br>Fina Azanur Laila Fatimatuz Zahro</h2>
     <p>Rabu, 28 Januari 2026</p>
-    <button onclick="openInvite()">Buka Undangan</button>
+    <button type="button" onclick="openInvite()">Buka Undangan</button>
   </div>
 </div>
 
 <div id="content" style="display:none">
 
-<section class="center reveal">
+<section class="center">
   <p>Kepada Yth:</p>
   <h3 id="guest">Bapak/Ibu/Saudara/i</h3>
 </section>
 
-<section class="reveal">
-  <blockquote>
+<section>
+  <blockquote class="center" style="font-family:'Amiri',serif;font-size:20px">
     “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup…”
     <br><strong>QS. Ar-Rum : 21</strong>
   </blockquote>
 </section>
 
-<section class="reveal">
+<section>
   <h2>Mempelai</h2>
   <div class="card center">
     <h3>Nurul Absor</h3>
-    <p>Putra ke-2 dari<br>Bapak Ahmad Ihsan & Ibu Laila Khamdanah</p><br>
+    <p>Putra ke-2 dari<br>Bapak Ahmad Ihsan & Ibu Laila Khamdanah</p>
+    <br>
     <h3>Fina Azanur Laila Fatimatuz Zahro</h3>
     <p>Putri pertama dari<br>Bapak Usman Rustamaji & Ibu Roisah</p>
   </div>
 </section>
 
-<section class="reveal">
+<section>
   <h2>Menuju Hari Bahagia</h2>
   <div class="countdown">
     <div class="time-box"><span id="cd_d">00</span><small>Hari</small></div>
@@ -106,7 +194,7 @@ a{color:#b89b5e;text-decoration:none;font-weight:500}
   </div>
 </section>
 
-<section class="reveal">
+<section>
   <h2>Akad & Resepsi</h2>
   <div class="card center">
     <p><strong>Akad Nikah</strong><br>Rabu, 28 Januari 2026<br>09.00 WIB</p>
@@ -117,16 +205,16 @@ a{color:#b89b5e;text-decoration:none;font-weight:500}
   </div>
 </section>
 
-<section class="reveal">
+<section>
   <h2>Cerita Kami</h2>
   <div class="card timeline">
     <div><strong>Awal Bertemu</strong><p>Allah mempertemukan kami.</p></div>
     <div><strong>Lamaran</strong><p>03 April 2025</p></div>
-    <div><strong>Pernikahan</strong><p>Janji suci sebagai ibadah.</p></div>
+    <div><strong>Pernikahan</strong><p>Dengan ridho Allah SWT.</p></div>
   </div>
 </section>
 
-<section class="reveal">
+<section>
   <h2>Galeri Foto</h2>
   <div class="gallery">
     <img src="assets/foto1.jpg">
@@ -136,25 +224,16 @@ a{color:#b89b5e;text-decoration:none;font-weight:500}
   </div>
 </section>
 
-<section class="reveal">
+<section>
   <h2>RSVP</h2>
   <div class="card center">
-    <iframe src="https://docs.google.com/forms/" width="100%" height="600" frameborder="0"></iframe>
-  </div>
-</section>
-
-<section class="reveal">
-  <h2>Amplop Digital</h2>
-  <div class="card center">
-    <p>Bank BRI</p>
-    <strong id="rek">734801009678536</strong><br>
-    <small>a.n Nurul Absor</small><br><br>
-    <button onclick="copyRek()">Salin Rekening</button>
+    <a href="https://docs.google.com/forms/" target="_blank">Isi Konfirmasi Kehadiran</a>
   </div>
 </section>
 
 <footer>
-  Terima kasih atas doa dan restu Bapak/Ibu/Saudara/i<br><br>
+  Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara berkenan hadir dan memberikan doa restu.
+  <br><br>
   <strong>Absor & Fina 🤍</strong>
 </footer>
 
@@ -162,41 +241,32 @@ a{color:#b89b5e;text-decoration:none;font-weight:500}
 
 <script>
 function openInvite(){
-  hero.style.display="none";
-  content.style.display="block";
-  bgm.play();
+  document.getElementById("hero").style.display="none";
+  document.getElementById("content").style.display="block";
+  document.getElementById("bgm").play();
 }
 
-function toggleMusic(){
-  bgm.paused?bgm.play():bgm.pause();
-}
-
-function copyRek(){
-  navigator.clipboard.writeText("734801009678536");
-  alert("Nomor rekening disalin");
-}
-
+// Nama tamu
 const p=new URLSearchParams(location.search);
-if(p.get("to")) guest.innerText=p.get("to").replace(/\+/g," ");
+if(p.get("to")){
+  document.getElementById("guest").innerText=p.get("to").replace(/\+/g," ");
+}
 
+// Countdown (PASTI JALAN)
 const target=new Date("2026-01-28T09:00:00").getTime();
 setInterval(()=>{
   const diff=target-Date.now();
   if(diff<=0) return;
-  cd_d.innerText=Math.floor(diff/86400000);
-  cd_h.innerText=Math.floor(diff/3600000)%24;
-  cd_m.innerText=Math.floor(diff/60000)%60;
-  cd_s.innerText=Math.floor(diff/1000)%60;
+  document.getElementById("cd_d").innerText=Math.floor(diff/86400000);
+  document.getElementById("cd_h").innerText=Math.floor(diff/3600000)%24;
+  document.getElementById("cd_m").innerText=Math.floor(diff/60000)%60;
+  document.getElementById("cd_s").innerText=Math.floor(diff/1000)%60;
 },1000);
 
-const reveals=document.querySelectorAll(".reveal");
-window.addEventListener("scroll",()=>{
-  reveals.forEach(el=>{
-    if(el.getBoundingClientRect().top < window.innerHeight-50){
-      el.classList.add("active");
-    }
-  });
-});
+function toggleMusic(){
+  const m=document.getElementById("bgm");
+  m.paused?m.play():m.pause();
+}
 </script>
 
 </body>
