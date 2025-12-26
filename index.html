@@ -24,7 +24,7 @@ section{
   max-width:950px;
   margin:auto;
   opacity:.6;
-  transition:.6s ease;
+  transition:.6s;
 }
 section.active{opacity:1}
 
@@ -45,9 +45,7 @@ h1,h2,h3{font-family:'Playfair Display',serif;text-align:center}
   background:
     linear-gradient(rgba(255,255,255,.45),rgba(255,255,255,.45)),
     url("assets/foto1.jpg") center/cover no-repeat;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display:flex;align-items:center;justify-content:center;
 }
 .hero-box{
   background:rgba(255,255,255,.78);
@@ -76,18 +74,29 @@ button{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:15px;
-  max-width:500px;
+  max-width:520px;
   margin:30px auto;
 }
 .cd{
   background:#fff;
   padding:22px 10px;
   border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,.1);
 }
 .cd span{font-size:32px;font-weight:600;color:#b89b5e}
 .cd small{font-size:12px;color:#777}
 
-/* FLOAT BUTTON */
+/* INPUT */
+input,select,textarea{
+  width:100%;
+  padding:12px;
+  margin:8px 0;
+  border-radius:12px;
+  border:1px solid #ddd;
+  font-family:Poppins;
+}
+
+/* FLOAT */
 .float{
   position:fixed;
   right:20px;
@@ -108,6 +117,13 @@ footer{
   text-align:center;
   padding:60px 20px;
   color:#b89b5e;
+}
+
+.ornamen{
+  text-align:center;
+  color:#b89b5e;
+  letter-spacing:6px;
+  margin:30px 0;
 }
 </style>
 </head>
@@ -133,31 +149,28 @@ footer{
 
 <div id="content" style="display:none">
 
-<!-- PEMBUKA -->
 <section class="center">
   <p><strong>Assalamu’alaikum Warahmatullahi Wabarakatuh</strong></p>
   <p>
-    Dengan memohon rahmat dan ridho Allah SWT,
+    Dengan memohon rahmat, ridho, dan keberkahan Allah SWT,
     kami bermaksud mengundang Bapak/Ibu/Saudara/i
     untuk hadir dan memberikan doa restu
-    pada acara pernikahan kami:
+    pada acara pernikahan kami.
   </p>
   <h3 id="guest">Bapak/Ibu/Saudara/i</h3>
+  <p id="personalMessage" style="font-style:italic"></p>
 </section>
 
-<!-- AYAT -->
+<div class="ornamen">❖ ❖ ❖</div>
+
 <section>
   <blockquote class="center" style="font-family:'Amiri',serif;font-size:21px">
     وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا
     لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً
-    <br><br>
-    “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu
-    pasangan hidup dari jenismu sendiri…”
     <br><strong>(QS. Ar-Rum : 21)</strong>
   </blockquote>
 </section>
 
-<!-- MEMPELAI -->
 <section>
   <h2>Mempelai</h2>
   <div class="card center">
@@ -168,7 +181,6 @@ footer{
   </div>
 </section>
 
-<!-- COUNTDOWN -->
 <section>
   <h2>Menuju Hari Bahagia</h2>
   <div class="countdown">
@@ -179,27 +191,21 @@ footer{
   </div>
 </section>
 
-<!-- AKAD -->
 <section>
   <h2>Akad & Resepsi</h2>
   <div class="card center">
     <p>
-      <strong>Akad Nikah</strong><br>
       Rabu, 28 Januari 2026<br>
-      <strong>9 Sya’ban 1447 H</strong><br>
-      <strong>Rabu Pahing</strong><br>
+      <span id="tanggalHijriah"></span><br>
+      <span id="tanggalJawa"></span><br>
       Pukul 09.00 WIB
     </p>
     <hr>
-    <p>
-      <strong>Resepsi</strong><br>
-      Pukul 10.00 WIB – Selesai
-    </p>
+    <p>Pukul 10.00 WIB – Selesai</p>
     <p>Dusun Kali Bawo, Belik, Pemalang</p>
   </div>
 </section>
 
-<!-- MAP -->
 <section>
   <h2>Lokasi Acara</h2>
   <div class="card">
@@ -222,10 +228,18 @@ footer{
   </div>
 </section>
 
+<!-- BUKU TAMU -->
+<section>
+  <h2>Buku Tamu & Ucapan</h2>
+  <div class="card">
+    <div id="bukuTamu">
+      <p class="center">Ucapan akan tampil di sini 🤍</p>
+    </div>
+  </div>
+</section>
+
 <footer>
-  Merupakan suatu kehormatan dan kebahagiaan bagi kami
-  apabila Bapak/Ibu/Saudara/i berkenan hadir
-  dan memberikan doa restu.
+  Terima kasih atas doa dan restu Bapak/Ibu/Saudara/i.
   <br><br>
   <strong>Nurul Absor & Fina Azanur Laila Fatimatuz Zahro 🤍</strong>
 </footer>
@@ -235,18 +249,16 @@ footer{
 <script>
 const bgm=document.getElementById("bgm");
 let playing=false;
-function openInvite(){
-  hero.style.display="none";
-  content.style.display="block";
-  bgm.play();playing=true;
-}
+function openInvite(){hero.style.display="none";content.style.display="block";bgm.play();playing=true;}
 function toggleMusic(){playing?bgm.pause():bgm.play();playing=!playing;}
 function toggleDark(){document.body.classList.toggle("dark");}
 
 // Nama tamu
 const p=new URLSearchParams(location.search);
 if(p.get("to")){
-  guest.innerText=p.get("to").replace(/\+/g," ");
+  const n=p.get("to").replace(/\+/g," ");
+  guest.innerText=n;
+  personalMessage.innerText=`Merupakan suatu kehormatan bagi kami apabila ${n} berkenan hadir dan memberikan doa restu.`;
 }
 
 // Countdown
@@ -260,25 +272,37 @@ setInterval(()=>{
   s.innerText=Math.floor(diff/1000)%60;
 },1000);
 
-// RSVP WhatsApp
+// Hijriah (AMAN)
+const acara=new Date("2026-01-28T09:00:00+07:00");
+tanggalHijriah.innerText=new Intl.DateTimeFormat(
+  'id-ID-u-ca-islamic',
+  {day:'numeric',month:'long',year:'numeric'}
+).format(acara)+" H";
+
+// Jawa
+const hari=["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
+const pasaran=["Legi","Pahing","Pon","Wage","Kliwon"];
+const ref=new Date(1970,0,1);
+const selisih=Math.floor((acara-ref)/86400000);
+tanggalJawa.innerText=`${hari[acara.getDay()]} ${pasaran[selisih%5]}`;
+
+// RSVP WA
 function sendRSVP(){
-  const text=`Assalamu’alaikum,
+  const text=`Assalamu’alaikum
 Nama: ${rsvpName.value}
 Kehadiran: ${rsvpStatus.value}
 
 Ucapan:
 ${rsvpMsg.value}`;
   window.open(
-    `https://wa.me/6283890194095?text=${encodeURIComponent(text)}`,
+    "https://wa.me/6283890194095?text="+encodeURIComponent(text),
     "_blank"
   );
 }
 
-// Animasi scroll
-document.querySelectorAll("section").forEach(sec=>{
-  new IntersectionObserver(e=>{
-    e.forEach(x=>x.isIntersecting&&x.target.classList.add("active"))
-  },{threshold:.4}).observe(sec);
+// Scroll anim
+document.querySelectorAll("section").forEach(s=>{
+  new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("active")),{threshold:.4}).observe(s);
 });
 </script>
 
