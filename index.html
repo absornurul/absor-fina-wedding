@@ -274,21 +274,35 @@ document.querySelectorAll("section").forEach(sec=>{
   new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("active")),{threshold:.4}).observe(sec);
 });
 
-// ===== BUKU TAMU =====
-const SHEET_ID = https://docs.google.com/forms/d/e/1FAIpQLSdiHBoXnAtuZZNe39mjOLYsV76obkObexayuRsIDNr3UYHRWg/viewform?usp=header;
-fetch(`https://opensheet.elk.sh/${SHEET_ID}/Form Responses 1`)
-.then(r=>r.json())
-.then(data=>{
-  const box=document.getElementById("bukuTamu");
-  box.innerHTML="";
-  data.reverse().slice(0,15).forEach(i=>{
-    box.innerHTML+=`
-      <div style="margin-bottom:18px">
-        <strong style="color:#b89b5e">${i.Nama||"Tamu"}</strong><br>
-        <small>${i["Konfirmasi Kehadiran"]||""}</small>
-        <p>${i.Ucapan||""}</p><hr>
-      </div>`;
-  });
+// Nama tamu
+const p=new URLSearchParams(location.search);
+if(p.get("to")) guest.innerText=p.get("to").replace(/\+/g," ");
+
+// Countdown
+const target=new Date("2026-01-28T09:00:00+07:00").getTime();
+setInterval(()=>{
+  const diff=target-Date.now();
+  if(diff<=0)return;
+  d.innerText=Math.floor(diff/86400000);
+  h.innerText=Math.floor(diff/3600000)%24;
+  m.innerText=Math.floor(diff/60000)%60;
+  s.innerText=Math.floor(diff/1000)%60;
+},1000);
+
+// RSVP WhatsApp (GANTI NOMOR WA)
+function sendRSVP(){
+  const text=`Assalamu’alaikum,
+Nama: ${rsvpName.value}
+Konfirmasi Kehadiran: ${rsvpStatus.value}
+
+Ucapan & Doa:
+${rsvpMsg.value}`;
+  window.open(
+    `https://wa.me/6283890194095?text=${encodeURIComponent(text)}`,
+    "_blank"
+  );
+}
+  
 })
 .catch(()=>bukuTamu.innerHTML="<p class='center'>Ucapan akan segera tampil 🤍</p>");
 </script>
