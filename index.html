@@ -31,7 +31,6 @@ section.active{opacity:1}
 h1,h2,h3{font-family:'Playfair Display',serif;text-align:center}
 .center{text-align:center}
 
-/* CARD */
 .card{
   background:rgba(255,255,255,.95);
   border-radius:28px;
@@ -40,7 +39,6 @@ h1,h2,h3{font-family:'Playfair Display',serif;text-align:center}
   box-shadow:0 18px 45px rgba(184,155,94,.25);
 }
 
-/* HERO */
 .hero{
   min-height:100vh;
   background:
@@ -49,7 +47,7 @@ h1,h2,h3{font-family:'Playfair Display',serif;text-align:center}
   display:flex;align-items:center;justify-content:center;
 }
 .hero-box{
-  background:rgba(255,255,255,.78); /* <<< TIDAK BLOK */
+  background:rgba(255,255,255,.78);
   backdrop-filter: blur(6px);
   padding:50px 35px;
   border-radius:32px;
@@ -59,7 +57,6 @@ h1,h2,h3{font-family:'Playfair Display',serif;text-align:center}
 .hero-box h1{font-size:13px;letter-spacing:4px;color:#b89b5e}
 .hero-box h2{font-size:28px;margin:18px 0}
 
-/* BUTTON */
 button{
   padding:14px 38px;
   border:none;
@@ -70,7 +67,6 @@ button{
   cursor:pointer;
 }
 
-/* COUNTDOWN */
 .countdown{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -82,40 +78,31 @@ button{
   background:#fff;
   padding:22px 10px;
   border-radius:20px;
-  box-shadow:0 12px 30px rgba(0,0,0,.1);
 }
 .cd span{font-size:32px;font-weight:600;color:#b89b5e}
 .cd small{font-size:12px;color:#777}
 
-/* TIMELINE */
 .timeline{border-left:3px solid #b89b5e;padding-left:22px}
 .timeline div{margin-bottom:28px}
 
-/* GALERI */
 .gallery{
   display:flex;
   gap:16px;
   overflow-x:auto;
-  scroll-snap-type:x mandatory;
 }
 .gallery img{
   width:85%;
   border-radius:22px;
-  scroll-snap-align:center;
 }
 
-/* FORM */
 input,select,textarea{
   width:100%;
   padding:12px;
   margin:8px 0;
   border-radius:12px;
   border:1px solid #ddd;
-  font-family:Poppins;
 }
-textarea{min-height:90px}
 
-/* FLOAT */
 .float{
   position:fixed;
   right:20px;
@@ -138,7 +125,6 @@ footer{
   color:#b89b5e;
 }
 
-/* ORNAMEN JAWA */
 .ornamen{
   text-align:center;
   color:#b89b5e;
@@ -169,41 +155,27 @@ footer{
 
 <div id="content" style="display:none">
 
-<!-- PEMBUKA -->
 <section class="center">
   <p><strong>Assalamu’alaikum Warahmatullahi Wabarakatuh</strong></p>
   <p>
-    Dengan memohon rahmat, ridho, dan keberkahan Allah Subhanahu Wa Ta’ala,
-    kami bermaksud mengundang Bapak/Ibu/Saudara/i
-    untuk hadir dan memberikan doa restu
-    pada acara pernikahan kami:
+    Dengan memohon rahmat, ridho, dan keberkahan Allah SWT,
+    kami mengundang Bapak/Ibu/Saudara/i
+    untuk menghadiri pernikahan kami.
   </p>
   <h3 id="guest">Bapak/Ibu/Saudara/i</h3>
-  <p id="personalMessage" style="font-style:italic">
-    Merupakan suatu kebahagiaan tersendiri bagi kami
-    apabila Bapak/Ibu/Saudara/i berkenan hadir
-    dan menjadi bagian dari hari istimewa kami.
-  </p>
+  <p id="personalMessage" style="font-style:italic"></p>
 </section>
 
 <div class="ornamen">❖ ❖ ❖</div>
 
-<!-- AYAT -->
 <section>
   <blockquote class="center" style="font-family:'Amiri',serif;font-size:21px">
     وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا
     لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً
-    <br><br>
-    “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu
-    pasangan hidup dari jenismu sendiri, agar kamu merasa tenteram kepadanya,
-    dan Dia menjadikan di antaramu rasa kasih dan sayang.”
     <br><strong>(QS. Ar-Rum : 21)</strong>
   </blockquote>
 </section>
 
-<div class="ornamen">❖ ❖ ❖</div>
-
-<!-- MEMPELAI -->
 <section>
   <h2>Mempelai</h2>
   <div class="card center">
@@ -214,19 +186,6 @@ footer{
   </div>
 </section>
 
-<!-- DOA NIKAH -->
-<section>
-  <h2>Doa Pernikahan</h2>
-  <blockquote class="center" style="font-family:'Amiri',serif;font-size:22px">
-    بَارَكَ اللهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ
-  </blockquote>
-  <p class="center">
-    “Semoga Allah memberkahi kalian berdua, memberkahi pernikahan kalian,
-    dan mempersatukan kalian berdua dalam kebaikan.”
-  </p>
-</section>
-
-<!-- COUNTDOWN -->
 <section>
   <h2>Menuju Hari Bahagia</h2>
   <div class="countdown">
@@ -237,25 +196,21 @@ footer{
   </div>
 </section>
 
-<!-- ACARA -->
 <section>
   <h2>Akad & Resepsi</h2>
   <div class="card center">
-    <p><strong>🕘 Akad Nikah</strong><br>
+    <p>
       Rabu, 28 Januari 2026<br>
       <span id="tanggalHijriah"></span><br>
       <span id="tanggalJawa"></span><br>
       Pukul 09.00 WIB
     </p>
     <hr>
-    <p><strong>🕙 Resepsi Pernikahan</strong><br>
-      Pukul 10.00 WIB – Selesai
-    </p>
-    <p>Dusun Kali Bawo, Kelurahan Badak<br>Kecamatan Belik, Kabupaten Pemalang</p>
+    <p>Pukul 10.00 WIB – Selesai</p>
+    <p>Dusun Kali Bawo, Belik, Pemalang</p>
   </div>
 </section>
 
-<!-- MAP -->
 <section>
   <h2>Lokasi Acara</h2>
   <div class="card">
@@ -264,12 +219,19 @@ footer{
   </div>
 </section>
 
+<!-- BUKU TAMU -->
+<section>
+  <h2>Buku Tamu & Ucapan</h2>
+  <div class="card">
+    <div id="bukuTamu">
+      <p class="center">Memuat ucapan...</p>
+    </div>
+  </div>
+</section>
+
 <footer>
-  Merupakan suatu kehormatan dan kebahagiaan bagi kami
-  apabila Bapak/Ibu/Saudara/i berkenan hadir
-  dan memberikan doa restu.
+  Terima kasih atas doa dan restu Bapak/Ibu/Saudara/i.
   <br><br>
-  <strong>Wassalamu’alaikum Warahmatullahi Wabarakatuh</strong><br><br>
   <strong>Nurul Absor & Fina Azanur Laila Fatimatuz Zahro 🤍</strong>
 </footer>
 
@@ -282,15 +244,15 @@ function openInvite(){hero.style.display="none";content.style.display="block";bg
 function toggleMusic(){playing?bgm.pause():bgm.play();playing=!playing;}
 function toggleDark(){document.body.classList.toggle("dark");}
 
-// nama tamu
+// Nama tamu
 const p=new URLSearchParams(location.search);
 if(p.get("to")){
   const n=p.get("to").replace(/\+/g," ");
   guest.innerText=n;
-  personalMessage.innerText=`Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila ${n} berkenan hadir dan memberikan doa restu.`;
+  personalMessage.innerText=`Merupakan suatu kehormatan bagi kami apabila ${n} berkenan hadir.`;
 }
 
-// countdown
+// Countdown
 const target=new Date("2026-01-28T09:00:00+07:00").getTime();
 setInterval(()=>{
   const diff=target-Date.now(); if(diff<=0)return;
@@ -300,22 +262,35 @@ setInterval(()=>{
   s.innerText=Math.floor(diff/1000)%60;
 },1000);
 
-// hijriah
+// Hijriah & Jawa
 const acara=new Date("2026-01-28T09:00:00+07:00");
-const hij=new Intl.DateTimeFormat('id-TN-u-ca-islamic',{day:'numeric',month:'long',year:'numeric'});
-tanggalHijriah.innerText=hij.format(acara)+" H";
-
-// jawa
+tanggalHijriah.innerText=new Intl.DateTimeFormat('id-TN-u-ca-islamic',{day:'numeric',month:'long',year:'numeric'}).format(acara)+" H";
 const hari=["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
 const pasaran=["Legi","Pahing","Pon","Wage","Kliwon"];
-const ref=new Date(1970,0,1);
-const diff=Math.floor((acara-ref)/86400000);
-tanggalJawa.innerText=`${hari[acara.getDay()]} ${pasaran[diff%5]}`;
+tanggalJawa.innerText=`${hari[acara.getDay()]} ${pasaran[Math.floor((acara-new Date(1970,0,1))/86400000)%5]}`;
 
-// fokus scroll
-const secs=document.querySelectorAll("section");
-const obs=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("active")),{threshold:.4});
-secs.forEach(s=>obs.observe(s));
+// Fokus scroll
+document.querySelectorAll("section").forEach(sec=>{
+  new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("active")),{threshold:.4}).observe(sec);
+});
+
+// ===== BUKU TAMU =====
+const SHEET_ID = https://docs.google.com/forms/d/e/1FAIpQLSdiHBoXnAtuZZNe39mjOLYsV76obkObexayuRsIDNr3UYHRWg/viewform?usp=header;
+fetch(`https://opensheet.elk.sh/${SHEET_ID}/Form Responses 1`)
+.then(r=>r.json())
+.then(data=>{
+  const box=document.getElementById("bukuTamu");
+  box.innerHTML="";
+  data.reverse().slice(0,15).forEach(i=>{
+    box.innerHTML+=`
+      <div style="margin-bottom:18px">
+        <strong style="color:#b89b5e">${i.Nama||"Tamu"}</strong><br>
+        <small>${i["Konfirmasi Kehadiran"]||""}</small>
+        <p>${i.Ucapan||""}</p><hr>
+      </div>`;
+  });
+})
+.catch(()=>bukuTamu.innerHTML="<p class='center'>Ucapan akan segera tampil 🤍</p>");
 </script>
 
 </body>
