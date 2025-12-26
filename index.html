@@ -2,23 +2,53 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>The Wedding Of Absor & Fina</title>
+<title>Undangan Pernikahan</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- FONT PREMIUM -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@500;600&family=Amiri&display=swap" rel="stylesheet">
+
+<!-- ================= DATA (TINGGAL EDIT INI SAJA) ================= -->
+<script>
+const DATA = {
+  pria: "Nurul Absor",
+  wanita: "Fina Azanur Laila Fatimatuz Zahro",
+
+  tanggalText: "Rabu, 28 Januari 2026",
+  tanggalISO: "2026-01-28T09:00:00",
+
+  lokasi: "Dusun Kali Bawo, Kelurahan Badak, Kecamatan Belik, Kabupaten Pemalang",
+  maps: "https://maps.google.com/?q=-7.176419,109.404790",
+
+  wa: "628xxxxxxxxx",
+
+  heroFoto: "assets/foto1.jpg",
+  galeri: [
+    "assets/foto1.jpg",
+    "assets/foto2.jpg"
+  ],
+
+  musik: "assets/musik.mp3"
+};
+</script>
+<!-- ================= END DATA ================= -->
+
 <style>
+/* RESET */
 body {
   margin: 0;
-  font-family: 'Poppins', Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   background: #faf8f3;
   color: #333;
+  transition: background .4s, color .4s;
 }
 
 /* HERO */
 .hero {
   min-height: 100vh;
   background:
-    linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.75)),
-    url("assets/foto1.jpg") center/cover no-repeat;
+    linear-gradient(rgba(255,255,255,.75), rgba(255,255,255,.75)),
+    url() center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,12 +56,13 @@ body {
 }
 
 .overlay {
-  background: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,.95);
   padding: 40px 30px;
-  border-radius: 20px;
+  border-radius: 22px;
   text-align: center;
   max-width: 520px;
   width: 100%;
+  box-shadow: 0 20px 40px rgba(0,0,0,.1);
 }
 
 .overlay h1 {
@@ -41,8 +72,9 @@ body {
 }
 
 .overlay h2 {
-  font-size: 24px;
-  margin: 12px 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  margin: 14px 0;
   line-height: 1.4;
 }
 
@@ -55,8 +87,8 @@ button {
   padding: 14px 36px;
   border: none;
   border-radius: 30px;
-  background: linear-gradient(135deg, #d6b36a, #b89b5e);
-  color: white;
+  background: linear-gradient(135deg,#d6b36a,#b89b5e);
+  color: #fff;
   font-size: 15px;
   cursor: pointer;
 }
@@ -65,7 +97,7 @@ button {
 #content {
   display: none;
   padding: 40px 20px;
-  max-width: 720px;
+  max-width: 760px;
   margin: auto;
 }
 
@@ -75,44 +107,35 @@ button {
 }
 
 blockquote {
-  font-style: italic;
+  font-family: 'Amiri', serif;
+  font-size: 18px;
   text-align: center;
   margin: 30px 0;
 }
 
 .event {
-  background: white;
-  padding: 25px;
-  border-radius: 18px;
+  background: #fff;
+  padding: 28px;
+  border-radius: 20px;
   margin: 25px 0;
   text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,.05);
 }
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2,1fr);
   gap: 10px;
 }
 
 .gallery img {
   width: 100%;
-  border-radius: 12px;
-}
-
-.music-control {
-  text-align: right;
-}
-
-.music-control button {
-  background: #eee;
-  color: #333;
-  font-size: 13px;
-  padding: 8px 14px;
+  border-radius: 14px;
 }
 
 .rsvp {
   display: inline-block;
-  margin-top: 10px;
+  margin-top: 12px;
   padding: 12px 22px;
   background: #25D366;
   color: #fff;
@@ -127,35 +150,62 @@ blockquote {
   font-weight: 600;
   color: #b89b5e;
 }
+
+/* FIXED BUTTONS */
+.music, .dark-toggle {
+  position: fixed;
+  right: 20px;
+}
+
+.music { bottom: 20px; }
+.dark-toggle { bottom: 70px; }
+
+.music button, .dark-toggle button {
+  border-radius: 50%;
+  padding: 12px;
+  border: none;
+  font-size: 18px;
+}
+
+/* ANIMATION */
+.fade {
+  animation: fadeIn 1.2s ease forwards;
+}
+@keyframes fadeIn {
+  from {opacity:0}
+  to {opacity:1}
+}
+
+/* DARK MODE */
+.dark {
+  background: #111;
+  color: #eee;
+}
+.dark .event,
+.dark .overlay {
+  background: #1c1c1c;
+  color: #eee;
+}
+.dark a { color: #d6b36a; }
 </style>
 </head>
 
 <body>
 
-<!-- AUDIO -->
-<audio id="bgMusic" loop>
-  <source src="assets/musik.mp3" type="audio/mpeg">
-</audio>
+<audio id="music" loop></audio>
 
 <!-- HERO -->
 <div class="hero" id="hero">
   <div class="overlay">
     <h1>THE WEDDING OF</h1>
-    <h2>
-      Nurul Absor<br>&<br>
-      Fina Azanur Laila Fatimatuz Zahro
-    </h2>
-    <p>Rabu, 28 Januari 2026</p>
+    <h2 id="nama"></h2>
+    <p id="tanggal"></p>
     <button id="btnOpen">Buka Undangan</button>
   </div>
 </div>
 
 <!-- CONTENT -->
 <div id="content">
-
-  <div class="music-control">
-    <button id="btnMusic">🔊 Musik</button>
-  </div>
 
   <div class="tamu">
     <p>Kepada Yth:<br><strong id="guest">Tamu Undangan</strong></p>
@@ -172,93 +222,92 @@ blockquote {
   </div>
 
   <div class="event">
-    <h3>Akad Nikah</h3>
-    <p>Rabu, 28 Januari 2026<br>09.00 WIB</p>
-  </div>
-
-  <div class="event">
-    <h3>Resepsi</h3>
-    <p>10.00 WIB – Selesai</p>
-    <p>
-      Dusun Kali Bawo, Kelurahan Badak<br>
-      Kecamatan Belik, Kabupaten Pemalang
-    </p>
-    <a href="https://maps.google.com/?q=-7.176419,109.404790" target="_blank">
-      Lihat Google Maps
-    </a>
+    <h3>Akad & Resepsi</h3>
+    <p id="acara"></p>
+    <a id="maps" target="_blank">Lihat Google Maps</a>
   </div>
 
   <div class="event">
     <h3>Galeri Foto</h3>
-    <div class="gallery">
-      <img src="assets/foto1.jpg">
-      <img src="assets/foto2.jpg">
-    </div>
+    <div class="gallery" id="galeri"></div>
   </div>
 
   <div class="event">
     <h3>Konfirmasi Kehadiran</h3>
-    <a class="rsvp" href="https://wa.me/6283890194095" target="_blank">
-      RSVP via WhatsApp
-    </a>
+    <a id="rsvp" class="rsvp" target="_blank">RSVP via WhatsApp</a>
   </div>
 
-  <div class="names">
-    Absor & Fina 🤍
+  <div class="event">
+    <h3>Scan Undangan</h3>
+    <img id="qr" width="180">
   </div>
 
+  <div class="names" id="penutup"></div>
+</div>
+
+<!-- FIXED BUTTONS -->
+<div class="dark-toggle">
+  <button id="btnDark">🌙</button>
+</div>
+
+<div class="music">
+  <button id="btnMusic">🎵</button>
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const hero = document.getElementById("hero");
-  const content = document.getElementById("content");
-  const btnOpen = document.getElementById("btnOpen");
-  const audio = document.getElementById("bgMusic");
-  const btnMusic = document.getElementById("btnMusic");
+/* HERO BACKGROUND */
+document.querySelector(".hero").style.backgroundImage =
+`linear-gradient(rgba(255,255,255,.75),rgba(255,255,255,.75)),url('${DATA.heroFoto}')`;
 
-  btnOpen.addEventListener("click", function () {
-    hero.style.display = "none";
-    content.style.display = "block";
-    audio.play();
-    window.scrollTo(0, 0);
-  });
+/* TEXT */
+nama.innerHTML = `${DATA.pria}<br>&<br>${DATA.wanita}`;
+tanggal.innerText = DATA.tanggalText;
+acara.innerText = `${DATA.tanggalText}\n${DATA.lokasi}`;
+maps.href = DATA.maps;
+penutup.innerText = `${DATA.pria} & ${DATA.wanita} 🤍`;
 
-  btnMusic.addEventListener("click", function () {
-    if (audio.paused) {
-      audio.play();
-      btnMusic.innerText = "🔊 Musik";
-    } else {
-      audio.pause();
-      btnMusic.innerText = "🔇 Musik";
-    }
-  });
+/* GUEST */
+const p=new URLSearchParams(location.search);
+if(p.get("to")) guest.innerText=p.get("to").replace(/\+/g," ");
 
-  const params = new URLSearchParams(window.location.search);
-  const guest = params.get("to");
-  if (guest) {
-    document.getElementById("guest").innerText = guest.replace(/\+/g, " ");
-  }
-
-  const target = new Date("2026-01-28T09:00:00").getTime();
-  const countdown = document.getElementById("countdown");
-
-  setInterval(() => {
-    const now = new Date().getTime();
-    const diff = target - now;
-
-    if (diff <= 0) {
-      countdown.innerText = "Hari ini 💍";
-      return;
-    }
-
-    const d = Math.floor(diff / (1000*60*60*24));
-    const h = Math.floor((diff / (1000*60*60)) % 24);
-    const m = Math.floor((diff / (1000*60)) % 60);
-
-    countdown.innerText = `${d} hari ${h} jam ${m} menit`;
-  }, 1000);
+/* GALERI */
+DATA.galeri.forEach(f=>{
+  const i=document.createElement("img");
+  i.src=f; galeri.appendChild(i);
 });
+
+/* MUSIC */
+music.src = DATA.musik;
+btnMusic.onclick=()=> music.paused?music.play():music.pause();
+
+/* OPEN */
+btnOpen.onclick=()=>{
+  hero.style.display="none";
+  content.style.display="block";
+  content.classList.add("fade");
+  music.play();
+};
+
+/* RSVP */
+rsvp.href=
+`https://wa.me/${DATA.wa}?text=Assalamualaikum,%20saya%20akan%20hadir%20di%20pernikahan%20${DATA.pria}%20dan%20${DATA.wanita}`;
+
+/* COUNTDOWN */
+const target=new Date(DATA.tanggalISO).getTime();
+setInterval(()=>{
+  const d=target-new Date().getTime();
+  if(d<=0){countdown.innerText="Hari ini 💍";return;}
+  countdown.innerText=
+  `${Math.floor(d/86400000)} hari ${Math.floor(d/3600000)%24} jam ${Math.floor(d/60000)%60} menit`;
+},1000);
+
+/* DARK MODE */
+btnDark.onclick=()=>document.body.classList.toggle("dark");
+
+/* QR */
+qr.src =
+"https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
+encodeURIComponent(location.href);
 </script>
 
 </body>
