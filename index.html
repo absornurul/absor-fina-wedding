@@ -197,43 +197,6 @@ footer{
 </div>
 
 <div id="content" style="display:none">
-  
-  <!-- DOMPET DIGITAL -->
-<section class="fade-up">
-  <h2>Amplop Digital</h2>
-  <p class="center">
-    Doa restu Bapak/Ibu/Saudara/i merupakan anugerah terindah bagi kami.
-    Namun apabila berkenan memberikan tanda kasih,
-    dapat disampaikan melalui dompet digital berikut:
-  </p>
-
-  <div class="card center">
-
-    <!-- BANK -->
-    <div style="margin-bottom:25px">
-      <strong style="color:#b89b5e">BANK BRI</strong><br><br>
-      <div style="font-size:18px;letter-spacing:2px">
-        7348 0100 9678 536
-      </div>
-      <small>a.n Nurul Absor</small><br><br>
-      <button onclick="copyText('734801009678536')">Salin Nomor Rekening</button>
-    </div>
-
-    <hr style="margin:30px 0">
-
-    <!-- E-WALLET -->
-    <div>
-      <strong style="color:#b89b5e">E-Wallet (Dana / OVO / GoPay)</strong><br><br>
-      <div style="font-size:18px;letter-spacing:2px">
-        0838 9019 4095
-      </div>
-      <small>a.n Nurul Absor</small><br><br>
-      <button onclick="copyText('083890194095')">Salin Nomor E-Wallet</button>
-    </div>
-
-  </div>
-</section>
-
 
 <section class="center">
   <p><strong>Assalamu’alaikum Warahmatullahi Wabarakatuh</strong></p>
@@ -422,7 +385,43 @@ ${rsvpMsg.value}`;
     "_blank"
   );
 }
+ <!-- DOMPET DIGITAL -->
+<section class="fade-up">
+  <h2>Amplop Digital</h2>
+  <p class="center">
+    Doa restu Bapak/Ibu/Saudara/i merupakan anugerah terindah bagi kami.
+    Namun apabila berkenan memberikan tanda kasih,
+    dapat disampaikan melalui dompet digital berikut:
+  </p>
 
+  <div class="card center">
+
+    <!-- BANK -->
+    <div style="margin-bottom:25px">
+      <strong style="color:#b89b5e">BANK BRI</strong><br><br>
+      <div style="font-size:18px;letter-spacing:2px">
+        7348 0100 9678 536
+      </div>
+      <small>a.n Nurul Absor</small><br><br>
+      <button onclick="copyText('734801009678536')">Salin Nomor Rekening</button>
+    </div>
+
+    <hr style="margin:30px 0">
+
+    <!-- E-WALLET -->
+    <div>
+      <strong style="color:#b89b5e">E-Wallet (Dana / OVO / GoPay)</strong><br><br>
+      <div style="font-size:18px;letter-spacing:2px">
+        0838 9019 4095
+      </div>
+      <small>a.n Nurul Absor</small><br><br>
+      <button onclick="copyText('083890194095')">Salin Nomor E-Wallet</button>
+    </div>
+
+  </div>
+</section>
+
+  
 // Scroll anim
 document.querySelectorAll("section").forEach(s=>{
   new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("active")),{threshold:.4}).observe(s);
