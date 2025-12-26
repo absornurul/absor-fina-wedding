@@ -155,12 +155,22 @@ footer{
 
 <div id="content" style="display:none">
 
+<!-- PEMBUKA -->
 <section class="center">
   <p><strong>Assalamu’alaikum Warahmatullahi Wabarakatuh</strong></p>
-  <p>Dengan memohon rahmat Allah SWT, kami mengundang Bapak/Ibu/Saudara/i</p>
+  <p>
+    Dengan memohon rahmat Allah SWT, kami mengundang
+    Bapak/Ibu/Saudara/i
+  </p>
+
   <h3 id="guest">Bapak/Ibu/Saudara/i</h3>
+
+  <p id="personalMessage"
+     style="font-style:italic;max-width:620px;margin:15px auto 0">
+  </p>
 </section>
 
+<!-- AYAT -->
 <section>
   <blockquote class="center" style="font-family:'Amiri',serif;font-size:21px">
     وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا
@@ -169,6 +179,7 @@ footer{
   </blockquote>
 </section>
 
+<!-- MEMPELAI -->
 <section>
   <h2>Mempelai</h2>
   <div class="card center">
@@ -179,6 +190,7 @@ footer{
   </div>
 </section>
 
+<!-- COUNTDOWN -->
 <section>
   <h2>Menuju Hari Bahagia</h2>
   <div class="countdown">
@@ -189,6 +201,7 @@ footer{
   </div>
 </section>
 
+<!-- AKAD -->
 <section>
   <h2>Akad & Resepsi</h2>
   <div class="card center">
@@ -204,14 +217,19 @@ footer{
   </div>
 </section>
 
+<!-- MAP -->
 <section>
   <h2>Lokasi Acara</h2>
   <div class="card">
-    <iframe src="https://www.google.com/maps?q=-7.176419,109.404790&output=embed"
-    width="100%" height="300" style="border:0;border-radius:15px"></iframe>
+    <iframe
+      src="https://www.google.com/maps?q=-7.176419,109.404790&output=embed"
+      width="100%" height="300"
+      style="border:0;border-radius:15px">
+    </iframe>
   </div>
 </section>
 
+<!-- GALERI -->
 <section>
   <h2>Galeri Foto</h2>
   <div class="gallery-ios">
@@ -221,6 +239,7 @@ footer{
   </div>
 </section>
 
+<!-- RSVP -->
 <section>
   <h2>Reservasi & Ucapan</h2>
   <div class="card">
@@ -234,6 +253,7 @@ footer{
   </div>
 </section>
 
+<!-- AMPLOP -->
 <section>
   <h2>Amplop Digital</h2>
   <div class="card center">
@@ -259,6 +279,7 @@ footer{
 <script>
 const bgm=document.getElementById("bgm");
 let playing=false;
+
 function openInvite(){
   hero.style.display="none";
   content.style.display="block";
@@ -268,6 +289,21 @@ function openInvite(){
 function toggleMusic(){playing?bgm.pause():bgm.play();playing=!playing}
 function toggleDark(){document.body.classList.toggle("dark")}
 
+/* AUTO NAMA TAMU + PESAN */
+const params=new URLSearchParams(window.location.search);
+if(params.get("to")){
+  const nama=params.get("to").replace(/\+/g," ");
+  guest.innerText=nama;
+
+  const pesanDefault=`Merupakan suatu kehormatan bagi kami apabila ${nama} berkenan hadir dan memberikan doa restu.`;
+
+  personalMessage.innerText=
+    params.get("pesan")
+    ? params.get("pesan").replace(/\+/g," ")
+    : pesanDefault;
+}
+
+/* COUNTDOWN */
 const target=new Date("2026-01-28T09:00:00+07:00").getTime();
 setInterval(()=>{
   const diff=target-Date.now();
@@ -278,10 +314,13 @@ setInterval(()=>{
   s.innerText=Math.floor(diff/1000)%60;
 },1000);
 
+/* HIJRIAH & JAWA */
 const acara=new Date("2026-01-28T09:00:00+07:00");
-tanggalHijriah.innerText=new Intl.DateTimeFormat(
-  'id-ID-u-ca-islamic',{day:'numeric',month:'long',year:'numeric'}
-).format(acara)+" H";
+tanggalHijriah.innerText=
+  new Intl.DateTimeFormat(
+    'id-ID-u-ca-islamic',
+    {day:'numeric',month:'long',year:'numeric'}
+  ).format(acara)+" H";
 
 const hari=["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
 const pasaran=["Legi","Pahing","Pon","Wage","Kliwon"];
@@ -289,14 +328,22 @@ const ref=new Date(1970,0,1);
 const sel=Math.floor((acara-ref)/86400000);
 tanggalJawa.innerText=`${hari[acara.getDay()]} ${pasaran[sel%5]}`;
 
+/* RSVP */
 function sendRSVP(){
   const txt=`Nama: ${rsvpName.value}
 Kehadiran: ${rsvpStatus.value}
-Ucapan: ${rsvpMsg.value}`;
-  window.open("https://wa.me/6283890194095?text="+encodeURIComponent(txt));
+Ucapan:
+${rsvpMsg.value}`;
+  window.open(
+    "https://wa.me/6283890194095?text="+encodeURIComponent(txt),
+    "_blank"
+  );
 }
 
-function copyText(t){navigator.clipboard.writeText(t);alert("Disalin");}
+function copyText(t){
+  navigator.clipboard.writeText(t);
+  alert("Berhasil disalin");
+}
 
 document.querySelectorAll("section").forEach(s=>{
   new IntersectionObserver(e=>e.forEach(x=>{
