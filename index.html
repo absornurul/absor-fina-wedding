@@ -178,6 +178,10 @@ footer{
 <audio id="bgm" loop>
   <source src="assets/music.mp3" type="audio/mpeg">
 </audio>
+  <audio id="bgm" loop muted playsinline>
+  <source src="assets/music.mp3" type="audio/mpeg">
+</audio>
+
 
 <div id="musicBtn" class="float" onclick="toggleMusic()">🎵</div>
 <div id="darkBtn" class="float" onclick="toggleDark()">🌙</div>
@@ -318,7 +322,16 @@ footer{
 <script>
 const bgm=document.getElementById("bgm");
 let playing=false;
-function openInvite(){hero.style.display="none";content.style.display="block";bgm.play();playing=true;}
+function openInvite(){
+  hero.style.display = "none";
+  content.style.display = "block";
+
+  bgm.muted = false;
+  bgm.play().catch(()=>{});
+
+  playing = true;
+}
+
 function toggleMusic(){playing?bgm.pause():bgm.play();playing=!playing;}
 function toggleDark(){document.body.classList.toggle("dark");}
 
