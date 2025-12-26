@@ -95,3 +95,15 @@ blockquote {
   font-weight: 600;
   color: #b89b5e;
 }
+
+.hero,
+.overlay {
+  pointer-events: auto;
+}
+
+button {
+  pointer-events: auto;
+  position: relative;
+  z-index: 10;
+}
+
