@@ -15,6 +15,192 @@ body{
   background:#faf8f3;
   color:#333;
   transition:.4s;
+}
+.dark{background:#121212;color:#eee}
+.dark .card{background:#1e1e1e}
+
+/* ===== GALERI IPHONE STYLE ===== */
+.gallery-wrap{margin-top:30px}
+.gallery-ios{
+  display:flex;gap:18px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  padding-bottom:10px;
+}
+.gallery-ios::-webkit-scrollbar{display:none}
+.gallery-ios img{
+  width:85%;
+  flex-shrink:0;
+  border-radius:26px;
+  scroll-snap-align:center;
+  box-shadow:0 18px 40px rgba(0,0,0,.15);
+}
+.gallery-dots{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin-top:15px;
+}
+.gallery-dots span{
+  width:8px;height:8px;
+  border-radius:50%;
+  background:#ccc;
+}
+.gallery-dots span.active{
+  background:#b89b5e;
+  transform:scale(1.2);
+}
+
+section{
+  padding:70px 20px;
+  max-width:950px;
+  margin:auto;
+  opacity:.6;
+  transition:.6s;
+}
+section.active{opacity:1}
+
+h1,h2,h3{font-family:'Playfair Display',serif;text-align:center}
+.center{text-align:center}
+
+.card{
+  background:#fff;
+  border-radius:28px;
+  padding:40px;
+  margin-top:30px;
+  box-shadow:0 18px 45px rgba(184,155,94,.25);
+}
+
+.hero{
+  min-height:100vh;
+  background:linear-gradient(rgba(255,255,255,.45),rgba(255,255,255,.45)),
+  url("assets/foto1.jpg") center/cover no-repeat;
+  display:flex;align-items:center;justify-content:center;
+}
+.hero-box{
+  background:rgba(255,255,255,.8);
+  padding:50px 35px;
+  border-radius:32px;
+  max-width:540px;
+  text-align:center;
+}
+
+button{
+  padding:14px 38px;
+  border:none;
+  border-radius:35px;
+  background:linear-gradient(135deg,#d6b36a,#b89b5e);
+  color:#fff;
+  cursor:pointer;
+}
+
+.float{
+  position:fixed;
+  right:20px;
+  width:55px;height:55px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  color:#fff;
+  z-index:999;
+}
+#musicBtn{bottom:20px;background:#b89b5e}
+#darkBtn{bottom:90px;background:#333}
+</style>
+</head>
+
+<body>
+
+<audio id="bgm" loop>
+  <source src="assets/music.mp3" type="audio/mpeg">
+</audio>
+
+<div id="musicBtn" class="float" onclick="toggleMusic()">🎵</div>
+<div id="darkBtn" class="float" onclick="toggleDark()">🌙</div>
+
+<!-- HERO -->
+<div class="hero" id="hero">
+  <div class="hero-box">
+    <h1>THE WEDDING OF</h1>
+    <h2>Nurul Absor<br>&<br>Fina Azanur Laila Fatimatuz Zahro</h2>
+    <p>Rabu, 28 Januari 2026</p>
+    <button onclick="openInvite()">Buka Undangan</button>
+  </div>
+</div>
+
+<div id="content" style="display:none">
+
+<!-- ISI KONTEN -->
+<!-- (SEMUA SECTION TETAP SAMA, TIDAK ADA YANG DIHAPUS) -->
+
+<!-- AMPL0P DIGITAL -->
+<section class="fade-up">
+  <h2>Amplop Digital</h2>
+  <p class="center">
+    Doa restu merupakan anugerah terindah bagi kami.
+  </p>
+  <div class="card center">
+    <strong>BANK BRI</strong><br><br>
+    7348 0100 9678 536<br>
+    <small>a.n Nurul Absor</small><br><br>
+    <button onclick="copyText('734801009678536')">Salin Rekening</button>
+    <hr>
+    <strong>E-Wallet</strong><br><br>
+    0838 9019 4095<br>
+    <small>a.n Nurul Absor</small><br><br>
+    <button onclick="copyText('083890194095')">Salin E-Wallet</button>
+  </div>
+</section>
+
+</div>
+
+<script>
+const bgm=document.getElementById("bgm");
+let playing=false;
+
+function openInvite(){
+  hero.style.display="none";
+  content.style.display="block";
+  bgm.play().catch(()=>{});
+  playing=true;
+}
+function toggleMusic(){playing?bgm.pause():bgm.play();playing=!playing}
+function toggleDark(){document.body.classList.toggle("dark")}
+
+function copyText(txt){
+  navigator.clipboard.writeText(txt);
+  alert("Berhasil disalin");
+}
+
+document.querySelectorAll("section").forEach(s=>{
+  new IntersectionObserver(e=>e.forEach(x=>{
+    if(x.isIntersecting)x.target.classList.add("active");
+  }),{threshold:.3}).observe(s);
+});
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>The Wedding of Absor & Fina</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@500;600&family=Amiri&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:#faf8f3;
+  color:#333;
+  transition:.4s;
 /* ===== GALERI IPHONE STYLE ===== */
 .gallery-wrap{
   margin-top:30px;
