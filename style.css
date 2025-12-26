@@ -9,16 +9,16 @@ body {
   min-height: 100vh;
   background-image:
     linear-gradient(
-      rgba(255,255,255,0.65),
-      rgba(255,255,255,0.65)
+      rgba(255,255,255,0.75),
+      rgba(255,255,255,0.75)
     ),
-    url("./assets/foto1.jpg");
-  background-position: center;
+    url("assets/foto1.jpg");
   background-size: cover;
-  background-repeat: no-repeat;
+  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 20px;
 }
 
 .overlay {
