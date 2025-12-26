@@ -41,7 +41,21 @@ h1,h2,h3{
   border-radius:26px;
   text-align:center;
   max-width:520px;
+  position:relative;
 }
+
+/* ORNAMEN ISLAMI HERO */
+.hero-box::before{
+  content:"";
+  display:block;
+  width:80px;
+  height:80px;
+  margin:0 auto 18px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 5 L61 39 L95 50 L61 61 L50 95 L39 61 L5 50 L39 39 Z' fill='%23b89b5e' fill-opacity='0.25'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-size:contain;
+}
+
 .hero-box h1{
   font-size:13px;
   letter-spacing:4px;
@@ -72,6 +86,49 @@ button{
   box-shadow:0 12px 30px rgba(0,0,0,.08);
 }
 
+/* ORNAMEN SECTION */
+.section-ornament{
+  display:flex;
+  justify-content:center;
+  margin-bottom:20px;
+}
+.section-ornament span{
+  width:60px;
+  height:2px;
+  background:#b89b5e;
+  position:relative;
+}
+.section-ornament span::before{
+  content:"۞";
+  position:absolute;
+  top:-12px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:18px;
+  color:#b89b5e;
+  background:#faf8f3;
+  padding:0 6px;
+}
+
+/* AYAT BOX */
+.ayat-box{
+  background:#fff;
+  border-radius:26px;
+  padding:35px 30px;
+  box-shadow:0 12px 30px rgba(0,0,0,.08);
+  position:relative;
+}
+.ayat-box::before,
+.ayat-box::after{
+  content:"☪";
+  position:absolute;
+  font-size:20px;
+  color:#b89b5e;
+  opacity:.4;
+}
+.ayat-box::before{top:18px;left:22px}
+.ayat-box::after{bottom:18px;right:22px}
+
 /* COUNTDOWN */
 .countdown{
   display:flex;
@@ -92,19 +149,7 @@ button{
   font-weight:600;
   color:#b89b5e;
 }
-.time-box small{
-  font-size:12px;
-  color:#777;
-}
-
-/* TIMELINE */
-.timeline{
-  border-left:3px solid #b89b5e;
-  padding-left:20px;
-}
-.timeline div{
-  margin-bottom:25px;
-}
+.time-box small{font-size:12px;color:#777}
 
 /* GALERI */
 .gallery{
@@ -116,6 +161,53 @@ button{
   width:100%;
   border-radius:16px;
 }
+
+/* AMPL0P DIGITAL */
+.rekening-wrapper{
+  display:flex;
+  justify-content:center;
+  margin-top:40px;
+}
+.rekening-card{
+  background:#fff;
+  border-radius:26px;
+  max-width:360px;
+  width:100%;
+  overflow:hidden;
+  box-shadow:0 18px 45px rgba(184,155,94,.28);
+}
+.rekening-head{
+  background:linear-gradient(135deg,#d6b36a,#b89b5e);
+  padding:20px;
+  text-align:center;
+  color:#fff;
+  letter-spacing:2px;
+}
+.rekening-body{
+  padding:30px 25px;
+  text-align:center;
+}
+.qr-frame{
+  display:inline-block;
+  padding:14px;
+  border-radius:24px;
+  background:linear-gradient(135deg,#f6e3b4,#d6b36a,#b89b5e);
+  box-shadow:0 15px 35px rgba(184,155,94,.35),
+             inset 0 0 0 2px rgba(255,255,255,.6);
+  margin-bottom:20px;
+}
+.qr-frame img{
+  width:200px;
+  border-radius:16px;
+  background:#fff;
+  padding:12px;
+}
+.rekening-number{
+  font-size:18px;
+  letter-spacing:2px;
+  font-weight:600;
+}
+.rekening-name{font-size:14px;color:#777;margin-bottom:20px}
 
 /* MUSIC */
 .music-btn{
@@ -131,7 +223,6 @@ button{
   font-size:20px;
   box-shadow:0 8px 20px rgba(0,0,0,.3);
   cursor:pointer;
-  z-index:999;
 }
 
 footer{
@@ -139,226 +230,67 @@ footer{
   padding:50px 20px;
   color:#b89b5e;
 }
-a{color:#b89b5e;text-decoration:none;font-weight:500}
 </style>
 </head>
 
 <body>
 
-<!-- AUDIO -->
 <audio id="bgm" loop>
   <source src="assets/music.mp3" type="audio/mpeg">
 </audio>
 <button class="music-btn" onclick="toggleMusic()">🎵</button>
 
-<!-- COVER -->
+<!-- HERO -->
 <div class="hero" id="hero">
   <div class="hero-box">
     <h1>THE WEDDING OF</h1>
     <h2>Nurul Absor<br>&<br>Fina Azanur Laila Fatimatuz Zahro</h2>
     <p>Rabu, 28 Januari 2026</p>
-    <button type="button" onclick="openInvite()">Buka Undangan</button>
+    <button onclick="openInvite()">Buka Undangan</button>
   </div>
 </div>
 
 <div id="content" style="display:none">
 
-<!-- PEMBUKA -->
 <section class="center">
   <p>Assalamu’alaikum Warahmatullahi Wabarakatuh</p>
-
-  <p>
-    Dengan penuh rasa syukur ke hadirat Allah SWT,<br>
-    serta memohon limpahan rahmat dan ridho-Nya,<br>
-    kami bermaksud menyampaikan kabar bahagia
-    sekaligus mengundang dengan segala kerendahan hati
-  </p>
-
   <h3 id="guest">Bapak/Ibu/Saudara/i</h3>
-
-  <p>
-    untuk berkenan hadir, menyaksikan,
-    serta memberikan doa restu<br>
-    pada acara pernikahan kami.
-  </p>
-
-  <p>
-    Kehadiran dan doa Bapak/Ibu/Saudara/i
-    merupakan kehormatan yang sangat berarti
-    bagi langkah awal perjalanan hidup kami.
-  </p>
 </section>
 
-<!-- AYAT -->
 <section>
-  <blockquote class="center" style="font-family:'Amiri',serif;font-size:20px">
-    وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا
-    لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً
-    <br><br>
-    “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu
-    pasangan hidup dari jenismu sendiri, agar kamu merasa tenteram kepadanya,
-    dan Dia menjadikan di antaramu rasa kasih dan sayang.”
-    <br><strong>(QS. Ar-Rum : 21)</strong>
-  </blockquote>
-
-  <p class="center">
-    Ayat suci ini menjadi doa dan pengingat bagi kami,
-    bahwa pernikahan adalah tempat berlabuhnya ketenangan,
-    tumbuhnya kasih sayang, serta rahmat Allah SWT
-    yang senantiasa kami harapkan.
-  </p>
-</section>
-
-<!-- MEMPELAI -->
-<section>
-  <h2>Mempelai</h2>
-  <div class="card center">
-    <h3>Nurul Absor</h3>
-    <p>
-      Putra ke-2 dari pasangan<br>
-      Bapak Ahmad Ihsan & Ibu Laila Khamdanah
-    </p>
-    <p>
-      yang insyaAllah akan mengemban amanah baru
-      sebagai pemimpin dan pelindung keluarga
-    </p>
-
-    <br>
-
-    <h3>Fina Azanur Laila Fatimatuz Zahro</h3>
-    <p>
-      Putri pertama dari pasangan<br>
-      Bapak Usman Rustamaji & Ibu Roisah
-    </p>
-    <p>
-      yang insyaAllah akan membersamai perjalanan hidup
-      dengan ketulusan, kesabaran, dan penuh kasih sayang
-    </p>
+  <div class="ayat-box">
+    <blockquote class="center" style="font-family:'Amiri',serif;font-size:20px">
+      وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا
+      لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً
+      <br><br>
+      “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu
+      pasangan hidup…”
+      <br><strong>(QS. Ar-Rum : 21)</strong>
+    </blockquote>
   </div>
 </section>
 
-<!-- COUNTDOWN -->
 <section>
-  <h2>Menuju Hari Bahagia</h2>
-  <p class="center">
-    Setiap pertemuan adalah takdir,
-    setiap proses adalah pembelajaran,
-    dan setiap pernikahan adalah amanah.
-  </p>
+  <div class="section-ornament"><span></span></div>
+  <h2>Amplop Digital</h2>
 
-  <div class="countdown">
-    <div class="time-box"><span id="cd_d">00</span><small>Hari</small></div>
-    <div class="time-box"><span id="cd_h">00</span><small>Jam</small></div>
-    <div class="time-box"><span id="cd_m">00</span><small>Menit</small></div>
-    <div class="time-box"><span id="cd_s">00</span><small>Detik</small></div>
-  </div>
-</section>
-
-<!-- ACARA -->
-<section>
-  <h2>Akad & Resepsi</h2>
-  <div class="card center">
-    <p>
-      <strong>Akad Nikah</strong><br>
-      Rabu, 28 Januari 2026<br>
-      Pukul 09.00 WIB
-    </p>
-    <hr>
-    <p>
-      <strong>Resepsi Pernikahan</strong><br>
-      Pukul 10.00 WIB – Selesai
-    </p>
-    <p>
-      Dusun Kali Bawo, Kelurahan Badak<br>
-      Kecamatan Belik, Kabupaten Pemalang
-    </p>
-    <a href="https://maps.google.com/?q=-7.176419,109.404790" target="_blank">
-      Lihat Google Maps
-    </a>
-  </div>
-</section>
-
-<!-- CERITA -->
-<section>
-  <h2>Cerita Kami</h2>
-  <div class="card timeline">
-    <div>
-      <strong>Awal Pertemuan</strong>
-      <p>
-        Tidak ada pertemuan yang benar-benar kebetulan.
-        Allah SWT mempertemukan kami pada waktu terbaik-Nya,
-        melalui cara yang sederhana namun bermakna.
-      </p>
-    </div>
-    <div>
-      <strong>Proses & Lamaran</strong>
-      <p>
-        Seiring waktu, kebersamaan mengajarkan kami arti
-        saling memahami dan menguatkan.
-        Dengan niat yang baik serta restu kedua keluarga,
-        kami memantapkan langkah pada 03 April 2025.
-      </p>
-    </div>
-    <div>
-      <strong>Ikatan Pernikahan</strong>
-      <p>
-        InsyaAllah, kami mengikrarkan janji suci pernikahan,
-        bukan sebagai akhir perjalanan,
-        melainkan awal dari ibadah terpanjang
-        yang akan kami jalani bersama.
-      </p>
+  <div class="rekening-wrapper">
+    <div class="rekening-card">
+      <div class="rekening-head">BANK BRI</div>
+      <div class="rekening-body">
+        <div class="qr-frame">
+          <img src="assets/qr-bri.png" alt="QR BRI">
+        </div>
+        <p class="rekening-number">7348 0100 9678 536</p>
+        <p class="rekening-name">a.n Nurul Absor</p>
+        <button onclick="salinRek()">Salin Nomor Rekening</button>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- GALERI -->
-<section>
-  <h2>Galeri Foto</h2>
-  <p class="center">
-    Potret-potret ini menjadi saksi perjalanan kami,
-    tentang tawa sederhana,
-    doa yang diam-diam kami panjatkan,
-    serta harapan yang tumbuh perlahan.
-  </p>
-  <div class="gallery">
-    <img src="assets/foto1.jpg">
-    <img src="assets/foto2.jpg">
-    <img src="assets/foto1.jpg">
-    <img src="assets/foto2.jpg">
-  </div>
-</section>
-
-<!-- RSVP -->
-<section>
-  <h2>Konfirmasi Kehadiran & Ucapan</h2>
-  <p class="center">
-    Dengan segala kerendahan hati,
-    kami mengharapkan Bapak/Ibu/Saudara/i
-    berkenan mengonfirmasi kehadiran
-    serta menyampaikan doa dan ucapan terbaik.
-  </p>
-
-  <div class="card center">
-    <iframe
-      src="https://docs.google.com/forms/d/e/1FAIpQLSdiHBoXnAtuZZNe39mjOLYsV76obkObexayuRsIDNr3UYHRWg/viewform?embedded=true"
-      width="100%"
-      height="700"
-      frameborder="0">
-    </iframe>
-  </div>
-</section>
-
-<!-- PENUTUP -->
 <footer>
-  Atas perhatian, kehadiran, serta doa restu
-  Bapak/Ibu/Saudara/i,
-  kami ucapkan terima kasih yang sebesar-besarnya.
-  <br><br>
-  Semoga Allah SWT membalas segala kebaikan
-  dengan limpahan rahmat dan keberkahan.
-  <br><br>
-  Wassalamu’alaikum Warahmatullahi Wabarakatuh
-  <br><br>
+  Wassalamu’alaikum Warahmatullahi Wabarakatuh<br><br>
   <strong>Nurul Absor & Fina Azanur Laila Fatimatuz Zahro 🤍</strong>
 </footer>
 
@@ -366,33 +298,19 @@ a{color:#b89b5e;text-decoration:none;font-weight:500}
 
 <script>
 function openInvite(){
-  document.getElementById("hero").style.display="none";
-  document.getElementById("content").style.display="block";
-  document.getElementById("bgm").play();
+  hero.style.display="none";
+  content.style.display="block";
+  bgm.play();
 }
-
-// Nama tamu
-const p=new URLSearchParams(location.search);
-if(p.get("to")){
-  document.getElementById("guest").innerText=p.get("to").replace(/\+/g," ");
-}
-
-// Countdown
-const target=new Date("2026-01-28T09:00:00").getTime();
-setInterval(()=>{
-  const diff=target-Date.now();
-  if(diff<=0) return;
-  document.getElementById("cd_d").innerText=Math.floor(diff/86400000);
-  document.getElementById("cd_h").innerText=Math.floor(diff/3600000)%24;
-  document.getElementById("cd_m").innerText=Math.floor(diff/60000)%60;
-  document.getElementById("cd_s").innerText=Math.floor(diff/1000)%60;
-},1000);
-
-// Musik
 function toggleMusic(){
-  const m=document.getElementById("bgm");
-  m.paused?m.play():m.pause();
+  bgm.paused?bgm.play():bgm.pause();
 }
+function salinRek(){
+  navigator.clipboard.writeText("734801009678536");
+  alert("Nomor rekening disalin");
+}
+const p=new URLSearchParams(location.search);
+if(p.get("to")) guest.innerText=p.get("to").replace(/\+/g," ");
 </script>
 
 </body>
