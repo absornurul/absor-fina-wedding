@@ -5,7 +5,7 @@
 <title>The Wedding of Absor & Fina</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@500;600&family=Amiri&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box}
@@ -14,49 +14,112 @@ body{
   font-family:'Poppins',sans-serif;
   background:#faf8f3;
   color:#333;
+  transition:.4s;
 }
-h1,h2,h3{font-family:'Playfair Display',serif}
+.dark{background:#121212;color:#eee}
+.dark .card{background:#1e1e1e}
+
+section{
+  padding:70px 20px;
+  max-width:950px;
+  margin:auto;
+  opacity:.5;
+  transition:.6s;
+}
+section.active{opacity:1}
+
+h1,h2,h3{font-family:'Playfair Display',serif;text-align:center}
 .center{text-align:center}
+
+.ornamen{
+  text-align:center;
+  color:#b89b5e;
+  letter-spacing:6px;
+  margin:40px 0;
+}
+
+.card{
+  background:#fff;
+  border-radius:28px;
+  padding:40px;
+  margin-top:30px;
+  box-shadow:0 18px 45px rgba(184,155,94,.25);
+}
 
 /* HERO */
 .hero{
   min-height:100vh;
   background:
-    linear-gradient(rgba(255,255,255,.55),rgba(255,255,255,.55)),
+    linear-gradient(rgba(255,255,255,.45),rgba(255,255,255,.45)),
     url("assets/foto1.jpg") center/cover no-repeat;
   display:flex;
   align-items:center;
   justify-content:center;
 }
 .hero-box{
-  background:rgba(255,255,255,.92);
-  padding:50px 40px;
+  background:rgba(255,255,255,.85);
+  padding:50px 35px;
   border-radius:32px;
-  max-width:560px;
+  max-width:540px;
   text-align:center;
-  margin:20px;
-}
-
-/* SECTION */
-section{
-  max-width:900px;
-  margin:auto;
-  padding:70px 20px;
 }
 
 /* BUTTON */
 button{
-  padding:14px 36px;
+  padding:14px 38px;
   border:none;
-  border-radius:30px;
+  border-radius:35px;
   background:linear-gradient(135deg,#d6b36a,#b89b5e);
   color:#fff;
-  font-size:15px;
   cursor:pointer;
 }
-button:hover{opacity:.9}
 
-/* FOOTER */
+/* COUNTDOWN */
+.countdown{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  max-width:520px;
+  margin:30px auto;
+}
+.cd{
+  background:#fff;
+  padding:22px 10px;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+.cd span{font-size:32px;font-weight:600;color:#b89b5e}
+.cd small{font-size:12px;color:#777}
+
+/* GALERI */
+.gallery-ios{
+  display:flex;
+  gap:18px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+}
+.gallery-ios img{
+  width:85%;
+  border-radius:26px;
+  scroll-snap-align:center;
+}
+
+/* FLOAT BUTTON */
+.float{
+  position:fixed;
+  right:20px;
+  width:55px;height:55px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  cursor:pointer;
+  z-index:999;
+}
+#musicBtn{bottom:20px;background:#b89b5e}
+#darkBtn{bottom:90px;background:#333}
+
 footer{
   text-align:center;
   padding:60px 20px;
@@ -67,81 +130,83 @@ footer{
 
 <body>
 
-<!-- AUDIO -->
 <audio id="bgm" loop>
   <source src="assets/music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- HERO (TETAP TAMPIL) -->
-<div class="hero" id="hero">
+<div id="musicBtn" class="float" onclick="toggleMusic()">🎵</div>
+<div id="darkBtn" class="float" onclick="toggleDark()">🌙</div>
+
+<!-- HERO -->
+<div class="hero">
   <div class="hero-box">
     <h1>THE WEDDING OF</h1>
     <h2>Nurul Absor<br>&<br>Fina Azanur Laila Fatimatuz Zahro</h2>
     <p>Rabu, 28 Januari 2026</p>
-    <br>
-    <button onclick="openInvite()">Buka Undangan</button>
+    <button onclick="playMusic()">Buka Undangan</button>
   </div>
 </div>
 
-<!-- ISI UNDANGAN (JUGA TETAP TAMPIL) -->
-<div id="content">
-
+<!-- PEMBUKA -->
 <section class="center">
   <p><strong>Assalamu’alaikum Warahmatullahi Wabarakatuh</strong></p>
   <p>Dengan memohon rahmat Allah SWT, kami mengundang</p>
+  <h3 id="guest">Bapak/Ibu/Saudara/i</h3>
+  <p id="personalMessage" style="font-style:italic"></p>
+</section>
 
-  <h3 id="guest" style="margin:20px 0">Bapak/Ibu/Saudara/i</h3>
+<div class="ornamen">❖ ❖ ❖</div>
 
-  <p id="personalMessage"
-     style="font-style:italic;max-width:650px;margin:0 auto;line-height:1.8">
-    Merupakan suatu kehormatan bagi kami apabila Bapak/Ibu/Saudara/i
-    berkenan hadir dan memberikan doa restu.
-  </p>
+<!-- AYAT -->
+<section>
+  <blockquote class="center" style="font-family:'Amiri',serif;font-size:22px">
+    وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا
+    <br><strong>(QS. Ar-Rum : 21)</strong>
+  </blockquote>
+</section>
 
-  <br><br>
-  <button id="btnWa">Kirim Undangan via WhatsApp</button>
+<div class="ornamen">❖ ❖ ❖</div>
+
+<!-- COUNTDOWN -->
+<section>
+  <h2>⏳ Menuju Hari Bahagia</h2>
+  <div class="countdown">
+    <div class="cd"><span id="d">00</span><small>Hari</small></div>
+    <div class="cd"><span id="h">00</span><small>Jam</small></div>
+    <div class="cd"><span id="m">00</span><small>Menit</small></div>
+    <div class="cd"><span id="s">00</span><small>Detik</small></div>
+  </div>
 </section>
 
 <footer>
   Terima kasih atas doa & restu<br><br>
-  <strong>Absor & Fina 🤍</strong>
+  <strong>Absor & Fina 🤍</strong><br><br>
+  <button id="btnWa">Kirim Undangan via WhatsApp</button>
 </footer>
 
-</div>
-
-<!-- SCRIPT -->
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+const bgm=document.getElementById("bgm");
+let playing=false;
 
-  /* ====== GANTI INI SAJA ====== */
-  const NO_WA = "6283890194095"; // nomor WhatsApp kamu
+function playMusic(){bgm.play().catch(()=>{});playing=true}
+function toggleMusic(){playing?bgm.pause():bgm.play();playing=!playing}
+function toggleDark(){document.body.classList.toggle("dark")}
 
-  const bgm = document.getElementById("bgm");
-  const content = document.getElementById("content");
+/* ===== NAMA TAMU + WA ===== */
+const params=new URLSearchParams(window.location.search);
+let nama="Bapak/Ibu/Saudara/i";
+if(params.get("to")){
+  nama=decodeURIComponent(params.get("to"))
+    .replace(/[_+]/g," ")
+    .toLowerCase()
+    .replace(/\b\w/g,c=>c.toUpperCase());
+}
+guest.innerText=nama;
+personalMessage.innerText=
+`Merupakan suatu kehormatan bagi kami apabila ${nama} berkenan hadir dan memberikan doa restu.`;
 
-  /* ====== TOMBOL BUKA UNDANGAN ====== */
-  window.openInvite = function () {
-    if (bgm) bgm.play().catch(()=>{});
-    content.scrollIntoView({ behavior: "smooth" });
-  };
-
-  /* ====== NAMA TAMU DARI URL ====== */
-  const params = new URLSearchParams(window.location.search);
-  let nama = "Bapak/Ibu/Saudara/i";
-
-  if (params.get("to")) {
-    nama = decodeURIComponent(params.get("to"))
-      .replace(/[_+]/g," ")
-      .toLowerCase()
-      .replace(/\b\w/g, h => h.toUpperCase());
-  }
-
-  document.getElementById("guest").innerText = nama;
-  document.getElementById("personalMessage").innerText =
-    `Merupakan suatu kehormatan bagi kami apabila ${nama} berkenan hadir dan memberikan doa restu.`;
-
-  /* ====== WHATSAPP ====== */
-  const pesanWA =
+document.getElementById("btnWa").onclick=function(){
+  const pesan=
 `Assalamu’alaikum Warahmatullahi Wabarakatuh
 
 Yth. ${nama},
@@ -149,17 +214,26 @@ Yth. ${nama},
 Kami mengundang Bapak/Ibu/Saudara/i
 untuk menghadiri acara pernikahan kami.
 
-Silakan buka undangan berikut:
-${window.location.href}
+${location.href}`;
+  window.open("https://wa.me/6283890194095?text="+encodeURIComponent(pesan));
+}
 
-Wassalamu’alaikum Warahmatullahi Wabarakatuh`;
+/* COUNTDOWN */
+const target=new Date("2026-01-28T09:00:00+07:00").getTime();
+setInterval(()=>{
+  const diff=target-Date.now();
+  if(diff<=0)return;
+  d.innerText=Math.floor(diff/86400000);
+  h.innerText=Math.floor(diff/3600000)%24;
+  m.innerText=Math.floor(diff/60000)%60;
+  s.innerText=Math.floor(diff/1000)%60;
+},1000);
 
-  const waLink = "https://wa.me/" + NO_WA + "?text=" + encodeURIComponent(pesanWA);
-
-  document.getElementById("btnWa").onclick = function () {
-    window.open(waLink, "_blank");
-  };
-
+/* SCROLL ANIMATION */
+document.querySelectorAll("section").forEach(s=>{
+  new IntersectionObserver(e=>{
+    e.forEach(x=>x.isIntersecting&&x.target.classList.add("active"))
+  }).observe(s);
 });
 </script>
 
