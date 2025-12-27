@@ -145,7 +145,7 @@ footer{
 
 <body>
 
-<audio id="bgm" loop>
+<audio id="bgm" loop preload="auto" playsinline>
   <source src="assets/music.mp3" type="audio/mpeg">
 </audio>
 
@@ -318,11 +318,25 @@ const bgm=document.getElementById("bgm");
 let playing=false;
 
 function openInvite(){
+  // UNLOCK AUDIO (WAJIB DI BARIS PERTAMA)
+  bgm.muted = false;
+  bgm.currentTime = 0;
+  bgm.play().then(()=>{
+    playing = true;
+  }).catch(()=>{});
+
+  // BARU UBAH TAMPILAN
   hero.style.display="none";
   content.style.display="block";
-  bgm.play().catch(()=>{});
-  playing=true;
 }
+document.addEventListener("touchstart", function once(){
+  if(!playing){
+    bgm.play().catch(()=>{});
+    playing = true;
+  }
+  document.removeEventListener("touchstart", once);
+});
+
 function toggleMusic(){playing?bgm.pause():bgm.play();playing=!playing}
 function toggleDark(){document.body.classList.toggle("dark")}
 
