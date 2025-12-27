@@ -1,143 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>The Wedding of Absor & Fina</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@500;600&family=Amiri&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- AUDIO -->
+<audio id="bgm" loop>
+  <source src="assets/music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- HERO -->
+<div class="hero" id="hero">
+  <div class="hero-box">
+    <h1>THE WEDDING OF</h1>
+    <h2>Nurul Absor<br>&<br>Fina Azanur Laila Fatimatuz Zahro</h2>
+    <p>Rabu, 28 Januari 2026</p>
+    <button onclick="openInvite()">Buka Undangan</button>
+  </div>
+</div>
+
+<div id="content" style="display:none">
+
+<section class="center">
+  <p><strong>Assalamu’alaikum Warahmatullahi Wabarakatuh</strong></p>
+  <p>Dengan memohon rahmat Allah SWT, kami mengundang</p>
+  <h3 id="guest">Bapak/Ibu/Saudara/i</h3>
+  <p id="personalMessage"></p>
+
+  <br>
+  <button id="btnWa">Kirim Undangan via WhatsApp</button>
+</section>
+
+</div>
+
+<!-- ================= SCRIPT FINAL ================= -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-  /* ===============================
-     MUSIK & MODE GELAP
-  ================================ */
+  /* ====== KONFIGURASI ====== */
+  const NO_WA = "6283890194095";
+  const TANGGAL_ACARA = "2026-01-28T09:00:00+07:00";
+
+  /* ====== OPEN INVITE ====== */
   const bgm = document.getElementById("bgm");
   let playing = false;
 
   window.openInvite = function () {
     document.getElementById("hero").style.display = "none";
     document.getElementById("content").style.display = "block";
-    bgm.play().catch(()=>{});
+    if (bgm) bgm.play().catch(()=>{});
     playing = true;
-    window.scrollTo(0,0);
   };
 
-  window.toggleMusic = function () {
-    playing ? bgm.pause() : bgm.play();
-    playing = !playing;
-  };
-
-  window.toggleDark = function () {
-    document.body.classList.toggle("dark");
-  };
-
-  /* ===============================
-     AUTO NAMA TAMU (HAPUS _ & +)
-  ================================ */
+  /* ====== NAMA TAMU ====== */
   const params = new URLSearchParams(window.location.search);
-  let namaTamu = "Bapak/Ibu/Saudara/i";
+  let nama = "Bapak/Ibu/Saudara/i";
 
   if (params.get("to")) {
-    namaTamu = decodeURIComponent(params.get("to"))
-      .replace(/[_+]/g, " ")
+    nama = decodeURIComponent(params.get("to"))
+      .replace(/[_+]/g," ")
       .toLowerCase()
-      .replace(/\b\w/g, c => c.toUpperCase());
+      .replace(/\b\w/g, h => h.toUpperCase());
   }
 
-  const guest = document.getElementById("guest");
-  const personalMessage = document.getElementById("personalMessage");
+  document.getElementById("guest").innerText = nama;
 
-  if (guest) guest.innerText = namaTamu;
+  document.getElementById("personalMessage").innerText =
+    `Merupakan suatu kehormatan bagi kami apabila ${nama} berkenan hadir dan memberikan doa restu.`;
 
-  const pesanDefault =
-    `Merupakan suatu kehormatan bagi kami apabila ${namaTamu} berkenan hadir dan memberikan doa restu.`;
-
-  if (personalMessage) {
-    personalMessage.innerText = params.get("pesan")
-      ? decodeURIComponent(params.get("pesan")).replace(/[_+]/g," ")
-      : pesanDefault;
-  }
-
-  /* ===============================
-     LINK WHATSAPP UNDANGAN
-  ================================ */
-  const noAdmin = "6283890194095"; // GANTI JIKA PERLU
-
+  /* ====== WHATSAPP ====== */
   const pesanWA =
 `Assalamu’alaikum Warahmatullahi Wabarakatuh
 
-Yth. ${namaTamu},
+Yth. ${nama},
 
-Dengan memohon rahmat Allah SWT, kami mengundang
-Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami.
+Kami mengundang Bapak/Ibu/Saudara/i
+untuk menghadiri acara pernikahan kami.
 
-Silakan buka undangan berikut:
-${window.location.href}
+Silakan buka undangan:
+${window.location.href}`;
 
-Merupakan suatu kehormatan bagi kami apabila ${namaTamu}
-berkenan hadir dan memberikan doa restu.
+  const waLink = "https://wa.me/" + NO_WA + "?text=" + encodeURIComponent(pesanWA);
 
-Wassalamu’alaikum Warahmatullahi Wabarakatuh`;
-
-  window.waUndangan =
-    `https://wa.me/${noAdmin}?text=${encodeURIComponent(pesanWA)}`;
-
-  /* ===============================
-     COUNTDOWN
-  ================================ */
-  const target = new Date("2026-01-28T09:00:00+07:00").getTime();
-
-  setInterval(() => {
-    const diff = target - Date.now();
-    if (diff <= 0) return;
-
-    document.getElementById("d").innerText = Math.floor(diff / 86400000);
-    document.getElementById("h").innerText = Math.floor(diff / 3600000) % 24;
-    document.getElementById("m").innerText = Math.floor(diff / 60000) % 60;
-    document.getElementById("s").innerText = Math.floor(diff / 1000) % 60;
-  }, 1000);
-
-  /* ===============================
-     TANGGAL HIJRIAH & JAWA
-  ================================ */
-  const acara = new Date("2026-01-28T09:00:00+07:00");
-
-  document.getElementById("tanggalHijriah").innerText =
-    new Intl.DateTimeFormat(
-      "id-ID-u-ca-islamic",
-      { day:"numeric", month:"long", year:"numeric" }
-    ).format(acara) + " H";
-
-  const hari = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
-  const pasaran = ["Legi","Pahing","Pon","Wage","Kliwon"];
-  const ref = new Date(1970,0,1);
-
-  document.getElementById("tanggalJawa").innerText =
-    `${hari[acara.getDay()]} ${pasaran[Math.floor((acara-ref)/86400000)%5]}`;
-
-  /* ===============================
-     RSVP WHATSAPP
-  ================================ */
-  window.sendRSVP = function () {
-    const t =
-`Nama: ${rsvpName.value}
-Kehadiran: ${rsvpStatus.value}
-Ucapan:
-${rsvpMsg.value}`;
-
-    window.open(
-      "https://wa.me/6283890194095?text=" + encodeURIComponent(t),
-      "_blank"
-    );
+  document.getElementById("btnWa").onclick = function () {
+    window.open(waLink, "_blank");
   };
-
-  window.copyText = function (t) {
-    navigator.clipboard.writeText(t);
-    alert("Berhasil disalin");
-  };
-
-  /* ===============================
-     ANIMASI SCROLL
-  ================================ */
-  document.querySelectorAll("section").forEach(sec => {
-    new IntersectionObserver(e =>
-      e.forEach(x => x.isIntersecting && x.target.classList.add("active")),
-      { threshold: 0.3 }
-    ).observe(sec);
-  });
 
 });
 </script>
+
+</body>
+</html>
