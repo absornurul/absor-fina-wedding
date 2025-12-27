@@ -22,23 +22,31 @@ h1,h2,h3{font-family:'Playfair Display',serif}
 .hero{
   min-height:100vh;
   background:
-    linear-gradient(rgba(255,255,255,.5),rgba(255,255,255,.5)),
+    linear-gradient(rgba(255,255,255,.55),rgba(255,255,255,.55)),
     url("assets/foto1.jpg") center/cover no-repeat;
   display:flex;
   align-items:center;
   justify-content:center;
 }
 .hero-box{
-  background:rgba(255,255,255,.9);
-  padding:45px 35px;
+  background:rgba(255,255,255,.92);
+  padding:50px 40px;
   border-radius:32px;
+  max-width:560px;
   text-align:center;
-  max-width:520px;
+  margin:20px;
+}
+
+/* SECTION */
+section{
+  max-width:900px;
+  margin:auto;
+  padding:70px 20px;
 }
 
 /* BUTTON */
 button{
-  padding:14px 32px;
+  padding:14px 36px;
   border:none;
   border-radius:30px;
   background:linear-gradient(135deg,#d6b36a,#b89b5e);
@@ -48,17 +56,11 @@ button{
 }
 button:hover{opacity:.9}
 
-/* CONTENT */
-section{
-  max-width:900px;
-  margin:auto;
-  padding:70px 20px;
-}
-.card{
-  background:#fff;
-  border-radius:28px;
-  padding:40px;
-  box-shadow:0 18px 40px rgba(184,155,94,.25);
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:60px 20px;
+  color:#b89b5e;
 }
 </style>
 </head>
@@ -70,7 +72,7 @@ section{
   <source src="assets/music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- HERO -->
+<!-- HERO (TETAP TAMPIL) -->
 <div class="hero" id="hero">
   <div class="hero-box">
     <h1>THE WEDDING OF</h1>
@@ -81,45 +83,49 @@ section{
   </div>
 </div>
 
-<!-- CONTENT -->
-<div id="content" style="display:none">
+<!-- ISI UNDANGAN (JUGA TETAP TAMPIL) -->
+<div id="content">
 
 <section class="center">
   <p><strong>Assalamu’alaikum Warahmatullahi Wabarakatuh</strong></p>
   <p>Dengan memohon rahmat Allah SWT, kami mengundang</p>
 
-  <h3 id="guest">Bapak/Ibu/Saudara/i</h3>
-  <p id="personalMessage" style="font-style:italic;margin-top:15px"></p>
+  <h3 id="guest" style="margin:20px 0">Bapak/Ibu/Saudara/i</h3>
+
+  <p id="personalMessage"
+     style="font-style:italic;max-width:650px;margin:0 auto;line-height:1.8">
+    Merupakan suatu kehormatan bagi kami apabila Bapak/Ibu/Saudara/i
+    berkenan hadir dan memberikan doa restu.
+  </p>
 
   <br><br>
   <button id="btnWa">Kirim Undangan via WhatsApp</button>
 </section>
 
-<footer class="center" style="padding:50px 20px;color:#b89b5e">
+<footer>
   Terima kasih atas doa & restu<br><br>
   <strong>Absor & Fina 🤍</strong>
 </footer>
 
 </div>
 
-<!-- ================= SCRIPT ================= -->
+<!-- SCRIPT -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-  /* ====== GANTI DI SINI SAJA ====== */
-  const NO_WA = "6283890194095"; // nomor WA kamu
+  /* ====== GANTI INI SAJA ====== */
+  const NO_WA = "6283890194095"; // nomor WhatsApp kamu
 
-  /* ====== OPEN INVITE ====== */
   const bgm = document.getElementById("bgm");
+  const content = document.getElementById("content");
 
+  /* ====== TOMBOL BUKA UNDANGAN ====== */
   window.openInvite = function () {
-    document.getElementById("hero").style.display = "none";
-    document.getElementById("content").style.display = "block";
     if (bgm) bgm.play().catch(()=>{});
-    window.scrollTo(0,0);
+    content.scrollIntoView({ behavior: "smooth" });
   };
 
-  /* ====== NAMA TAMU ====== */
+  /* ====== NAMA TAMU DARI URL ====== */
   const params = new URLSearchParams(window.location.search);
   let nama = "Bapak/Ibu/Saudara/i";
 
