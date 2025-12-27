@@ -4,7 +4,63 @@
 <meta charset="UTF-8">
 <title>The Wedding of Absor & Fina</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@500;600&family=Amiri&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:#faf8f3;
+  color:#333;
+}
+h1,h2,h3{font-family:'Playfair Display',serif}
+.center{text-align:center}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  background:
+    linear-gradient(rgba(255,255,255,.5),rgba(255,255,255,.5)),
+    url("assets/foto1.jpg") center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.hero-box{
+  background:rgba(255,255,255,.9);
+  padding:45px 35px;
+  border-radius:32px;
+  text-align:center;
+  max-width:520px;
+}
+
+/* BUTTON */
+button{
+  padding:14px 32px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,#d6b36a,#b89b5e);
+  color:#fff;
+  font-size:15px;
+  cursor:pointer;
+}
+button:hover{opacity:.9}
+
+/* CONTENT */
+section{
+  max-width:900px;
+  margin:auto;
+  padding:70px 20px;
+}
+.card{
+  background:#fff;
+  border-radius:28px;
+  padding:40px;
+  box-shadow:0 18px 40px rgba(184,155,94,.25);
+}
+</style>
 </head>
 
 <body>
@@ -20,41 +76,47 @@
     <h1>THE WEDDING OF</h1>
     <h2>Nurul Absor<br>&<br>Fina Azanur Laila Fatimatuz Zahro</h2>
     <p>Rabu, 28 Januari 2026</p>
+    <br>
     <button onclick="openInvite()">Buka Undangan</button>
   </div>
 </div>
 
+<!-- CONTENT -->
 <div id="content" style="display:none">
 
 <section class="center">
   <p><strong>Assalamu’alaikum Warahmatullahi Wabarakatuh</strong></p>
   <p>Dengan memohon rahmat Allah SWT, kami mengundang</p>
-  <h3 id="guest">Bapak/Ibu/Saudara/i</h3>
-  <p id="personalMessage"></p>
 
-  <br>
+  <h3 id="guest">Bapak/Ibu/Saudara/i</h3>
+  <p id="personalMessage" style="font-style:italic;margin-top:15px"></p>
+
+  <br><br>
   <button id="btnWa">Kirim Undangan via WhatsApp</button>
 </section>
 
+<footer class="center" style="padding:50px 20px;color:#b89b5e">
+  Terima kasih atas doa & restu<br><br>
+  <strong>Absor & Fina 🤍</strong>
+</footer>
+
 </div>
 
-<!-- ================= SCRIPT FINAL ================= -->
+<!-- ================= SCRIPT ================= -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-  /* ====== KONFIGURASI ====== */
-  const NO_WA = "6283890194095";
-  const TANGGAL_ACARA = "2026-01-28T09:00:00+07:00";
+  /* ====== GANTI DI SINI SAJA ====== */
+  const NO_WA = "6283890194095"; // nomor WA kamu
 
   /* ====== OPEN INVITE ====== */
   const bgm = document.getElementById("bgm");
-  let playing = false;
 
   window.openInvite = function () {
     document.getElementById("hero").style.display = "none";
     document.getElementById("content").style.display = "block";
     if (bgm) bgm.play().catch(()=>{});
-    playing = true;
+    window.scrollTo(0,0);
   };
 
   /* ====== NAMA TAMU ====== */
@@ -69,7 +131,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   document.getElementById("guest").innerText = nama;
-
   document.getElementById("personalMessage").innerText =
     `Merupakan suatu kehormatan bagi kami apabila ${nama} berkenan hadir dan memberikan doa restu.`;
 
@@ -82,8 +143,10 @@ Yth. ${nama},
 Kami mengundang Bapak/Ibu/Saudara/i
 untuk menghadiri acara pernikahan kami.
 
-Silakan buka undangan:
-${window.location.href}`;
+Silakan buka undangan berikut:
+${window.location.href}
+
+Wassalamu’alaikum Warahmatullahi Wabarakatuh`;
 
   const waLink = "https://wa.me/" + NO_WA + "?text=" + encodeURIComponent(pesanWA);
 
