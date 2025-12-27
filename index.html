@@ -325,13 +325,20 @@ function openInvite(){
 function toggleMusic(){playing?bgm.pause():bgm.play();playing=!playing}
 function toggleDark(){document.body.classList.toggle("dark")}
 
-/* AUTO NAMA TAMU + PESAN */
-const params=new URLSearchParams(window.location.search);
-if(params.get("to")){
-  const nama=params.get("to").replace(/\+/g," ");
-  guest.innerText=nama;
-  const def=`Merupakan suatu kehormatan bagi kami apabila ${nama} berkenan hadir dan memberikan doa restu.`;
-  personalMessage.innerText=params.get("pesan")?params.get("pesan").replace(/\+/g," "):def;
+/* AUTO NAMA TAMU + PESAN (FIX SPASI) */
+const params = new URLSearchParams(window.location.search);
+if (params.get("to")) {
+  const nama = decodeURIComponent(params.get("to"))
+    .replace(/[_+]/g, " ");
+
+  guest.innerText = nama;
+
+  const def =
+    `Merupakan suatu kehormatan bagi kami apabila ${nama} berkenan hadir dan memberikan doa restu.`;
+
+  personalMessage.innerText = params.get("pesan")
+    ? decodeURIComponent(params.get("pesan")).replace(/[_+]/g, " ")
+    : def;
 }
 
 /* COUNTDOWN */
