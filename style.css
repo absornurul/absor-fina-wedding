@@ -14,3 +14,23 @@ body {
     linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
     url("./assets/foto2.jpg") center/cover fixed no-repeat;
 }
+/* BACKGROUND ISI UNDANGAN */
+#content{
+  background:
+    linear-gradient(rgba(250,248,243,.82),rgba(250,248,243,.82)),
+    url("./assets/foto2.jpg") center/cover fixed no-repeat;
+}
+.dark #content{
+  background:
+    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
+    url("./assets/foto2.jpg") center/cover fixed no-repeat;
+}
+
+/* CARD LEBIH TRANSPARAN */
+.card{
+  background:rgba(255,255,255,.75);
+}
+.dark .card{
+  background:rgba(0,0,0,.65);
+  color:#fff;
+}
