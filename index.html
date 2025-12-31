@@ -12,27 +12,49 @@
 body{
   margin:0;
   font-family:'Poppins',sans-serif;
+  background:#faf8f3;
   color:#333;
   transition:.4s;
+}
+.dark{background:#121212;color:#eee}
+
+/* HERO */
+.hero{
+  min-height:100vh;
   background:
-    linear-gradient(rgba(250,248,243,.85),rgba(250,248,243,.85)),
-    url("assets/foto2.jpg") center/cover fixed no-repeat;
+    linear-gradient(rgba(255,255,255,.45),rgba(255,255,255,.45)),
+    url("./assets/foto1.jpg") center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.hero-box{
+  background:rgba(255,255,255,.85);
+  padding:50px 35px;
+  border-radius:32px;
+  max-width:540px;
+  text-align:center;
 }
 
-.dark{
-  color:#eee;
+/* ISI UNDANGAN BACKGROUND */
+#content{
+  background:
+    linear-gradient(rgba(250,248,243,.82),rgba(250,248,243,.82)),
+    url("./assets/foto2.jpg") center/cover fixed no-repeat;
+}
+.dark #content{
   background:
     linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
-    url("assets/foto2.jpg") center/cover fixed no-repeat;
+    url("./assets/foto2.jpg") center/cover fixed no-repeat;
 }
 
+/* SECTION */
 section{
   padding:70px 20px;
   max-width:950px;
   margin:auto;
   opacity:.4;
   transition:.6s;
-  position:relative;
 }
 section.active{opacity:1}
 
@@ -40,7 +62,6 @@ h1,h2,h3{
   font-family:'Playfair Display',serif;
   text-align:center;
 }
-
 .center{text-align:center}
 
 /* ORNAMEN */
@@ -51,43 +72,18 @@ h1,h2,h3{
   margin:40px 0;
   font-size:18px;
 }
-.ornamen::before,
-.ornamen::after{
-  content:"✦";
-  margin:0 12px;
-}
 
-/* CARD TRANSPARAN */
+/* CARD */
 .card{
-  background:rgba(255,255,255,.55);
-  backdrop-filter:blur(8px);
+  background:rgba(255,255,255,.72);
   border-radius:28px;
   padding:40px;
   margin-top:30px;
-  box-shadow:0 18px 45px rgba(0,0,0,.15);
-  transition:.4s;
+  box-shadow:0 18px 45px rgba(0,0,0,.18);
 }
 .dark .card{
-  background:rgba(0,0,0,.55);
-}
-
-/* HERO */
-.hero{
-  min-height:100vh;
-  background:
-    linear-gradient(rgba(255,255,255,.45),rgba(255,255,255,.45)),
-    url("assets/foto1.jpg") center/cover no-repeat;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.hero-box{
-  background:rgba(255,255,255,.75);
-  backdrop-filter:blur(6px);
-  padding:50px 35px;
-  border-radius:32px;
-  max-width:540px;
-  text-align:center;
+  background:rgba(0,0,0,.65);
+  color:#fff;
 }
 
 /* BUTTON */
@@ -109,7 +105,7 @@ button{
   margin:30px auto;
 }
 .cd{
-  background:rgba(255,255,255,.65);
+  background:rgba(255,255,255,.8);
   border-radius:20px;
   padding:22px 10px;
 }
@@ -121,12 +117,10 @@ button{
   display:flex;
   gap:18px;
   overflow-x:auto;
-  scroll-snap-type:x mandatory;
 }
 .gallery-ios img{
   width:85%;
   border-radius:26px;
-  scroll-snap-align:center;
 }
 
 /* INPUT */
@@ -166,7 +160,7 @@ footer{
 <body>
 
 <audio id="bgm" loop preload="auto" playsinline>
-  <source src="assets/music.mp3" type="audio/mpeg">
+  <source src="./assets/music.mp3" type="audio/mpeg">
 </audio>
 
 <div id="musicBtn" class="float" onclick="toggleMusic()">🎵</div>
@@ -183,23 +177,34 @@ footer{
 
 <div id="content" style="display:none">
 
-<!-- ISI KONTEN TETAP SAMA -->
-<!-- SEMUA SECTION LAMA TIDAK DIHAPUS -->
-<!-- HANYA TAMPILAN YANG DIHALUSKAN -->
-
-<!-- (SCRIPT TETAP SAMA, TIDAK DIUBAH) -->
+<!-- SEMUA ISI UNDANGAN KAMU TETAP DI SINI -->
+<!-- TIDAK ADA YANG DIHAPUS -->
 
 </div>
 
 <script>
 const bgm=document.getElementById("bgm");
 let playing=false;
+
 function openInvite(){
-  bgm.muted=false;bgm.currentTime=0;bgm.play().then(()=>playing=true);
-  hero.style.display="none";content.style.display="block";
+  bgm.muted=false;
+  bgm.currentTime=0;
+  bgm.play().then(()=>playing=true);
+  hero.style.display="none";
+  content.style.display="block";
 }
-function toggleMusic(){playing?bgm.pause():bgm.play();playing=!playing}
-function toggleDark(){document.body.classList.toggle("dark")}
+
+function toggleMusic(){
+  playing?bgm.pause():bgm.play();
+  playing=!playing;
+}
+function toggleDark(){
+  document.body.classList.toggle("dark");
+}
+
+document.querySelectorAll("section").forEach(s=>{
+  new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("active")),{threshold:.3}).observe(s);
+});
 </script>
 
 </body>
