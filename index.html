@@ -18,7 +18,7 @@ body{
 }
 .dark{color:#eee}
 
-/* HERO */
+/* HERO (FOTO1) */
 .hero{
   min-height:100vh;
   background:
@@ -36,7 +36,7 @@ body{
   text-align:center;
 }
 
-/* ISI UNDANGAN */
+/* ISI UNDANGAN (FOTO2) */
 #content{
   display:none;
   background:
@@ -65,7 +65,7 @@ h1,h2,h3{
 }
 .center{text-align:center}
 
-/* ORNAMEN */
+/* ORNAMEN / PERNAK-PERNIK */
 .ornamen{
   text-align:center;
   color:#b89b5e;
@@ -79,9 +79,9 @@ h1,h2,h3{
   margin:0 12px;
 }
 
-/* CARD */
+/* CARD (TIDAK NGEBLOK) */
 .card{
-  background:rgba(255,255,255,.72);
+  background:rgba(255,255,255,.68);
   backdrop-filter:blur(6px);
   border-radius:28px;
   padding:40px;
@@ -201,7 +201,8 @@ footer{
     <br><strong>(QS. Ar-Rum : 21)</strong>
   </blockquote>
   <p class="center" style="max-width:720px;margin:25px auto 0;font-style:italic">
-    “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan-pasangan dari jenismu sendiri, agar kamu merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang.”
+    “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan-pasangan dari jenismu sendiri,
+    agar kamu merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang.”
   </p>
 </section>
 
@@ -222,10 +223,10 @@ footer{
 <section>
   <h2>⏳ Menuju Hari Bahagia</h2>
   <div class="countdown">
-    <div class="cd"><span>00</span><br>Hari</div>
-    <div class="cd"><span>00</span><br>Jam</div>
-    <div class="cd"><span>00</span><br>Menit</div>
-    <div class="cd"><span>00</span><br>Detik</div>
+    <div class="cd"><span id="d">00</span><br>Hari</div>
+    <div class="cd"><span id="h">00</span><br>Jam</div>
+    <div class="cd"><span id="m">00</span><br>Menit</div>
+    <div class="cd"><span id="s">00</span><br>Detik</div>
   </div>
 </section>
 
@@ -273,16 +274,28 @@ footer{
 const bgm=document.getElementById("bgm");
 let playing=false;
 function openInvite(){
-  bgm.muted=false;bgm.play().then(()=>playing=true);
+  bgm.muted=false;
+  bgm.play().then(()=>playing=true);
   hero.style.display="none";
   content.style.display="block";
 }
 function toggleMusic(){playing?bgm.pause():bgm.play();playing=!playing}
 function toggleDark(){document.body.classList.toggle("dark")}
+
+const target=new Date("2026-01-28T09:00:00+07:00").getTime();
+setInterval(()=>{
+  const diff=target-Date.now();
+  if(diff<=0)return;
+  d.innerText=Math.floor(diff/86400000);
+  h.innerText=Math.floor(diff/3600000)%24;
+  m.innerText=Math.floor(diff/60000)%60;
+  s.innerText=Math.floor(diff/1000)%60;
+},1000);
+
 document.querySelectorAll("section").forEach(s=>{
   new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("active")),{threshold:.3}).observe(s);
 });
-</script>
+</script>k
 
 </body>
 </html>
