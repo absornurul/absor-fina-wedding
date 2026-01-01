@@ -20,7 +20,7 @@ body{
 }
 body.dark{background:#121212;color:#eee}
 
-/* HERO (FOTO1) */
+/* HERO */
 .hero{
   min-height:100vh;
   background:
@@ -38,7 +38,7 @@ body.dark{background:#121212;color:#eee}
   max-width:560px;
 }
 
-/* CONTENT (FOTO2) */
+/* CONTENT */
 #content{
   display:none;
   min-height:100vh;
@@ -179,33 +179,6 @@ footer{
     لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً
     <br><strong>(QS. Ar-Rum : 21)</strong>
   </blockquote>
-  <p class="center" style="max-width:720px;margin:25px auto 0;font-style:italic">
-    “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan
-    dari jenismu sendiri agar kamu merasa tenteram kepadanya, dan Dia menjadikan
-    di antaramu rasa kasih dan sayang.”
-  </p>
-</section>
-
-<div class="ornamen">❖ ❖ ❖</div>
-
-<section>
-  <h2>⏳ Menuju Hari Bahagia</h2>
-  <div class="countdown">
-    <div class="cd"><span id="d">00</span><br>Hari</div>
-    <div class="cd"><span id="h">00</span><br>Jam</div>
-    <div class="cd"><span id="m">00</span><br>Menit</div>
-    <div class="cd"><span id="s">00</span><br>Detik</div>
-  </div>
-</section>
-
-<div class="ornamen">❖ ❖ ❖</div>
-
-<section>
-  <h2>📍 Lokasi Acara</h2>
-  <div class="card">
-    <iframe src="https://www.google.com/maps?q=-7.176419,109.404790&output=embed"
-      width="100%" height="300" style="border:0;border-radius:15px"></iframe>
-  </div>
 </section>
 
 <div class="ornamen">❖ ❖ ❖</div>
@@ -217,18 +190,6 @@ footer{
     <textarea id="ucapan" placeholder="Ucapan & Doa"></textarea>
     <button onclick="kirimUcapan()">Kirim</button>
     <div id="listUcapan" style="margin-top:20px"></div>
-  </div>
-</section>
-
-<div class="ornamen">❖ ❖ ❖</div>
-
-<section>
-  <h2>💳 Amplop Digital</h2>
-  <div class="card center">
-    <strong>BANK BRI</strong><br><br>
-    7348 0100 9678 536<br>
-    <small>a.n Nurul Absor</small><br><br>
-    <button onclick="copyText('734801009678536')">Salin Rekening</button>
   </div>
 </section>
 
@@ -248,19 +209,14 @@ let playing = false;
 function openInvite(){
   bgm.play().catch(()=>{});
   playing = true;
-  document.getElementById("hero").style.display="none";
-  document.getElementById("content").style.display="block";
+  hero.style.display="none";
+  content.style.display="block";
   document.querySelectorAll("section").forEach(s=>s.classList.add("active"));
 }
 
 /* FLOAT */
-document.getElementById("musicBtn").onclick = ()=>{
-  playing ? bgm.pause() : bgm.play();
-  playing = !playing;
-};
-document.getElementById("darkBtn").onclick = ()=>{
-  document.body.classList.toggle("dark");
-};
+musicBtn.onclick = ()=>{ playing ? bgm.pause() : bgm.play(); playing=!playing; }
+darkBtn.onclick  = ()=>{ document.body.classList.toggle("dark"); }
 
 /* NAMA TAMU */
 const p = new URLSearchParams(location.search);
@@ -271,35 +227,43 @@ if(p.get("to")){
     `Merupakan suatu kehormatan bagi kami apabila ${nama} berkenan hadir dan memberikan doa restu.`;
 }
 
-/* COUNTDOWN */
-const target = new Date("2026-01-28T09:00:00+07:00").getTime();
-setInterval(()=>{
-  const diff = target - Date.now();
-  if(diff<=0) return;
-  d.innerText=Math.floor(diff/86400000);
-  h.innerText=Math.floor(diff/3600000)%24;
-  m.innerText=Math.floor(diff/60000)%60;
-  s.innerText=Math.floor(diff/1000)%60;
-},1000);
-
-/* BUKU TAMU */
+/* ===== BUKU TAMU + LOCALSTORAGE ===== */
 function kirimUcapan(){
-  const nama = document.getElementById("namaTamu").value.trim();
-  const pesan = document.getElementById("ucapan").value.trim();
-  const list  = document.getElementById("listUcapan");
-  if(!nama || !pesan){alert("Nama dan ucapan tidak boleh kosong 🤍");return;}
-  const item=document.createElement("div");
-  item.style.marginBottom="15px";
-  item.innerHTML=`<strong>${nama}</strong><br>${pesan}`;
-  list.prepend(item);
-  namaTamu.value=""; ucapan.value="";
+  const nama = namaTamu.value.trim();
+  const pesan = ucapan.value.trim();
+  if(!nama || !pesan){
+    alert("Nama dan ucapan tidak boleh kosong 🤍");
+    return;
+  }
+
+  const data = JSON.parse(localStorage.getItem("bukuTamu") || "[]");
+  data.unshift({
+    nama,
+    pesan,
+    waktu: new Date().toLocaleString("id-ID")
+  });
+  localStorage.setItem("bukuTamu", JSON.stringify(data));
+  renderUcapan();
+
+  namaTamu.value="";
+  ucapan.value="";
 }
 
-/* COPY */
-function copyText(t){
-  navigator.clipboard.writeText(t);
-  alert("Berhasil disalin");
+function renderUcapan(){
+  const list = document.getElementById("listUcapan");
+  const data = JSON.parse(localStorage.getItem("bukuTamu") || "[]");
+  list.innerHTML="";
+  data.forEach(i=>{
+    list.innerHTML += `
+      <div style="margin-bottom:15px">
+        <strong>${i.nama}</strong><br>
+        ${i.pesan}<br>
+        <small style="color:#888">${i.waktu}</small>
+      </div>`;
+  });
 }
+
+document.addEventListener("DOMContentLoaded", renderUcapan);
 </script>
 
 </body>
