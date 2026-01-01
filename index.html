@@ -291,11 +291,27 @@ setInterval(()=>{
 },1000);
 
 /* BUKU TAMU */
+<script>
 function kirimUcapan(){
-  if(!namaTamu.value||!ucapan.value)return;
-  listUcapan.innerHTML+=`<p><strong>${namaTamu.value}</strong><br>${ucapan.value}</p>`;
-  namaTamu.value="";ucapan.value="";
+  const nama = document.getElementById("namaTamu").value.trim();
+  const pesan = document.getElementById("ucapan").value.trim();
+  const list = document.getElementById("listUcapan");
+
+  if(nama === "" || pesan === ""){
+    alert("Nama dan ucapan tidak boleh kosong 🤍");
+    return;
+  }
+
+  const item = document.createElement("div");
+  item.style.marginBottom = "15px";
+  item.innerHTML = `<strong>${nama}</strong><br>${pesan}`;
+
+  list.prepend(item);
+
+  document.getElementById("namaTamu").value = "";
+  document.getElementById("ucapan").value = "";
 }
+</script>
 
 function copyText(t){
   navigator.clipboard.writeText(t);
