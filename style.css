@@ -98,18 +98,3 @@ h1,h2,h3{
   cursor:pointer;
   z-index:99;
 }
-</style>
-/* BACKGROUND ISI UNDANGAN */
-#content{
-  background:
-    linear-gradient(rgba(250,248,243,.85),rgba(250,248,243,.85)),
-    url("assets/foto2.jpg") center/cover no-repeat fixed;
-  transition:.4s;
-}
-
-/* MODE GELAP */
-.dark #content{
-  background:
-    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
-    url("assets/foto2.jpg") center/cover no-repeat fixed;
-}
