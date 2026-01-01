@@ -290,8 +290,42 @@ setInterval(()=>{
   s.innerText=Math.floor(diff/1000)%60;
 },1000);
 
-/* BUKU TAMU */
 <script>
+const bgm=document.getElementById("bgm");
+let playing=false;
+
+function openInvite(){
+  bgm.play().catch(()=>{});
+  playing=true;
+  hero.style.display="none";
+  content.style.display="block";
+  document.querySelectorAll("section").forEach(s=>s.classList.add("active"));
+}
+
+musicBtn.onclick=()=>{playing?bgm.pause():bgm.play();playing=!playing}
+darkBtn.onclick=()=>document.body.classList.toggle("dark");
+
+/* NAMA TAMU */
+const p=new URLSearchParams(location.search);
+if(p.get("to")){
+  const nama=decodeURIComponent(p.get("to")).replace(/[_+]/g," ");
+  guest.innerText=nama;
+  personalMessage.innerText=
+  `Merupakan suatu kehormatan bagi kami apabila ${nama} berkenan hadir dan memberikan doa restu.`;
+}
+
+/* COUNTDOWN */
+const target=new Date("2026-01-28T09:00:00+07:00").getTime();
+setInterval(()=>{
+  const diff=target-Date.now();
+  if(diff<=0)return;
+  d.innerText=Math.floor(diff/86400000);
+  h.innerText=Math.floor(diff/3600000)%24;
+  m.innerText=Math.floor(diff/60000)%60;
+  s.innerText=Math.floor(diff/1000)%60;
+},1000);
+
+/* ===== BUKU TAMU (FIX) ===== */
 function kirimUcapan(){
   const nama = document.getElementById("namaTamu").value.trim();
   const pesan = document.getElementById("ucapan").value.trim();
@@ -311,8 +345,13 @@ function kirimUcapan(){
   document.getElementById("namaTamu").value = "";
   document.getElementById("ucapan").value = "";
 }
-</script>
 
+/* COPY REKENING */
+function copyText(t){
+  navigator.clipboard.writeText(t);
+  alert("Berhasil disalin");
+}
+</script>
 function copyText(t){
   navigator.clipboard.writeText(t);
   alert("Berhasil disalin");
