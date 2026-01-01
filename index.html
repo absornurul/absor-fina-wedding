@@ -9,261 +9,113 @@
 
 <style>
 *{box-sizing:border-box}
-
-/* BODY */
-body{
-  margin:0;
-  font-family:'Poppins',sans-serif;
-  background:#faf8f3;
-  color:#333;
-  transition:.4s;
-}
-body.dark{background:#121212;color:#eee}
-
-/* HERO */
-.hero{
-  min-height:100vh;
-  background:
-    linear-gradient(rgba(255,255,255,.45),rgba(255,255,255,.45)),
-    url("assets/foto1.jpg") center/cover no-repeat;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.hero-box{
-  background:rgba(255,255,255,.85);
-  padding:50px 35px;
-  border-radius:32px;
-  text-align:center;
-  max-width:560px;
-}
-
-/* CONTENT */
-#content{
-  display:none;
-  min-height:100vh;
-  background:
-    linear-gradient(rgba(250,248,243,.88),rgba(250,248,243,.88)),
-    url("assets/foto2.jpg") center/cover no-repeat fixed;
-}
-body.dark #content{
-  background:
-    linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.78)),
-    url("assets/foto2.jpg") center/cover no-repeat fixed;
-}
-
-/* SECTION */
-section{
-  padding:70px 20px;
-  max-width:950px;
-  margin:auto;
-  opacity:.5;
-  transition:.6s;
-}
-section.active{opacity:1}
-
-h1,h2,h3{
-  font-family:'Playfair Display',serif;
-  text-align:center;
-}
+body{margin:0;font-family:Poppins,sans-serif;background:#faf8f3;color:#333}
+.dark{background:#121212;color:#eee}
+.hero{min-height:100vh;background:linear-gradient(rgba(255,255,255,.45),rgba(255,255,255,.45)),url("assets/foto1.jpg") center/cover no-repeat;display:flex;align-items:center;justify-content:center}
+.hero-box{background:rgba(255,255,255,.85);padding:50px;border-radius:30px;text-align:center}
+#content{display:none;background:linear-gradient(rgba(250,248,243,.88),rgba(250,248,243,.88)),url("assets/foto2.jpg") center/cover fixed}
+.dark #content{background:linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.78)),url("assets/foto2.jpg") center/cover fixed}
+section{padding:70px 20px;max-width:950px;margin:auto}
+.card{background:rgba(255,255,255,.85);border-radius:28px;padding:40px;margin-top:30px}
+.dark .card{background:rgba(0,0,0,.65)}
 .center{text-align:center}
-
-.ornamen{
-  text-align:center;
-  color:#b89b5e;
-  letter-spacing:6px;
-  margin:40px 0;
-}
-
-/* CARD */
-.card{
-  background:rgba(255,255,255,.85);
-  border-radius:28px;
-  padding:40px;
-  margin-top:30px;
-  box-shadow:0 18px 45px rgba(184,155,94,.25);
-}
-body.dark .card{background:rgba(0,0,0,.65)}
-
-/* BUTTON */
-button{
-  padding:14px 38px;
-  border:none;
-  border-radius:35px;
-  background:linear-gradient(135deg,#d6b36a,#b89b5e);
-  color:#fff;
-  cursor:pointer;
-}
-
-/* COUNTDOWN */
-.countdown{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-  max-width:520px;
-  margin:30px auto;
-}
-.cd{
-  background:#fff;
-  padding:22px 10px;
-  border-radius:20px;
-}
-.cd span{font-size:32px;font-weight:600;color:#b89b5e}
-
-/* INPUT */
-input,textarea{
-  width:100%;
-  padding:12px;
-  margin:8px 0;
-  border-radius:12px;
-  border:1px solid #ddd;
-}
-
-/* FLOAT */
-.float{
-  position:fixed;
-  right:20px;
-  width:55px;height:55px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-  cursor:pointer;
-  z-index:999;
-}
+.ornamen{text-align:center;color:#b89b5e;letter-spacing:6px;margin:40px 0}
+button{padding:14px 38px;border:none;border-radius:35px;background:#b89b5e;color:#fff}
+.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;max-width:520px;margin:auto}
+.cd{background:#fff;padding:20px;border-radius:18px}
+.float{position:fixed;right:20px;width:55px;height:55px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;z-index:99}
 #musicBtn{bottom:20px;background:#b89b5e}
 #darkBtn{bottom:90px;background:#333}
-
-footer{
-  text-align:center;
-  padding:60px 20px;
-  color:#b89b5e;
-}
 </style>
 </head>
 
 <body>
 
-<audio id="bgm" loop preload="auto" playsinline>
-  <source src="assets/music.mp3" type="audio/mpeg">
+<audio id="bgm" loop>
+  <source src="assets/music.mp3">
 </audio>
 
 <div id="musicBtn" class="float">🎵</div>
 <div id="darkBtn" class="float">🌙</div>
 
-<!-- HERO -->
 <div class="hero" id="hero">
   <div class="hero-box">
-    <h1>THE WEDDING OF</h1>
-    <h2>Nurul Absor<br>&<br>Fina Azanur Laila Fatimatuz Zahro</h2>
+    <h1>The Wedding Of</h1>
+    <h2>Nurul Absor<br>&<br>Fina Azanur</h2>
     <p>Rabu, 28 Januari 2026</p>
     <button onclick="openInvite()">Buka Undangan</button>
   </div>
 </div>
 
-<!-- CONTENT -->
 <div id="content">
 
-<section class="center">
-  <p><strong>Assalamu’alaikum Warahmatullahi Wabarakatuh</strong></p>
-  <h3 id="guest">Bapak/Ibu/Saudara/i</h3>
-  <p id="personalMessage" style="font-style:italic"></p>
-</section>
-
-<div class="ornamen">❖ ❖ ❖</div>
-
+<!-- MEMPELAI -->
 <section>
-  <blockquote class="center" style="font-family:'Amiri',serif;font-size:22px;line-height:1.9">
-    وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا
-    لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً
-    <br><strong>(QS. Ar-Rum : 21)</strong>
-  </blockquote>
-</section>
-
-<div class="ornamen">❖ ❖ ❖</div>
-
-<section>
-  <h2>🤍 Buku Tamu</h2>
-  <div class="card">
-    <input id="namaTamu" placeholder="Nama">
-    <textarea id="ucapan" placeholder="Ucapan & Doa"></textarea>
-    <button onclick="kirimUcapan()">Kirim</button>
-    <div id="listUcapan" style="margin-top:20px"></div>
+  <h2 class="center">💍 Mempelai</h2>
+  <div class="card center">
+    <h3>Nurul Absor</h3>
+    <p>Putra Kedua Bapak Ahmad Ihsan & Ibu Laila</p>
+    <br>
+    <h3>Fina Azanur</h3>
+    <p>Putri Pertama Bapak Usman & Ibu Roisah</p>
   </div>
 </section>
 
-<footer>
-  Terima kasih atas doa & restu<br>
-  <strong>Absor & Fina 🤍</strong>
-</footer>
+<div class="ornamen">❖ ❖ ❖</div>
+
+<!-- COUNTDOWN -->
+<section>
+  <h2 class="center">⏳ Menuju Hari Bahagia</h2>
+  <div class="countdown">
+    <div class="cd"><span id="d">00</span><br>Hari</div>
+    <div class="cd"><span id="h">00</span><br>Jam</div>
+    <div class="cd"><span id="m">00</span><br>Menit</div>
+    <div class="cd"><span id="s">00</span><br>Detik</div>
+  </div>
+</section>
+
+<div class="ornamen">❖ ❖ ❖</div>
+
+<!-- AMPLOP -->
+<section>
+  <h2 class="center">💳 Amplop Digital</h2>
+  <div class="card center">
+    <strong>BRI</strong><br>
+    7348 0100 9678 536<br>
+    a.n Nurul Absor<br><br>
+    <button onclick="copyText('734801009678536')">Salin</button>
+  </div>
+</section>
 
 </div>
 
 <script>
-/* AUDIO */
-const bgm = document.getElementById("bgm");
-let playing = false;
+const bgm=document.getElementById("bgm");
+let play=false;
 
-/* OPEN INVITE */
 function openInvite(){
-  bgm.play().catch(()=>{});
-  playing = true;
+  bgm.play();play=true;
   hero.style.display="none";
   content.style.display="block";
-  document.querySelectorAll("section").forEach(s=>s.classList.add("active"));
 }
 
-/* FLOAT */
-musicBtn.onclick = ()=>{ playing ? bgm.pause() : bgm.play(); playing=!playing; }
-darkBtn.onclick  = ()=>{ document.body.classList.toggle("dark"); }
+musicBtn.onclick=()=>{play?bgm.pause():bgm.play();play=!play}
+darkBtn.onclick=()=>document.body.classList.toggle("dark");
 
-/* NAMA TAMU */
-const p = new URLSearchParams(location.search);
-if(p.get("to")){
-  const nama = decodeURIComponent(p.get("to")).replace(/[_+]/g," ");
-  guest.innerText = nama;
-  personalMessage.innerText =
-    `Merupakan suatu kehormatan bagi kami apabila ${nama} berkenan hadir dan memberikan doa restu.`;
+const target=new Date("2026-01-28T09:00:00+07:00").getTime();
+setInterval(()=>{
+  const diff=target-Date.now();
+  if(diff<0)return;
+  d.innerText=Math.floor(diff/86400000);
+  h.innerText=Math.floor(diff/3600000)%24;
+  m.innerText=Math.floor(diff/60000)%60;
+  s.innerText=Math.floor(diff/1000)%60;
+},1000);
+
+function copyText(t){
+  navigator.clipboard.writeText(t);
+  alert("Disalin");
 }
-
-/* ===== BUKU TAMU + LOCALSTORAGE ===== */
-function kirimUcapan(){
-  const nama = namaTamu.value.trim();
-  const pesan = ucapan.value.trim();
-  if(!nama || !pesan){
-    alert("Nama dan ucapan tidak boleh kosong 🤍");
-    return;
-  }
-
-  const data = JSON.parse(localStorage.getItem("bukuTamu") || "[]");
-  data.unshift({
-    nama,
-    pesan,
-    waktu: new Date().toLocaleString("id-ID")
-  });
-  localStorage.setItem("bukuTamu", JSON.stringify(data));
-  renderUcapan();
-
-  namaTamu.value="";
-  ucapan.value="";
-}
-
-function renderUcapan(){
-  const list = document.getElementById("listUcapan");
-  const data = JSON.parse(localStorage.getItem("bukuTamu") || "[]");
-  list.innerHTML="";
-  data.forEach(i=>{
-    list.innerHTML += `
-      <div style="margin-bottom:15px">
-        <strong>${i.nama}</strong><br>
-        ${i.pesan}<br>
-        <small style="color:#888">${i.waktu}</small>
-      </div>`;
-  });
-}
-
-document.addEventListener("DOMContentLoaded", renderUcapan);
 </script>
 
 </body>
