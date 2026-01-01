@@ -10,7 +10,7 @@
 <style>
 *{box-sizing:border-box}
 
-/* ================= BODY ================= */
+/* BODY */
 body{
   margin:0;
   font-family:'Poppins',sans-serif;
@@ -18,12 +18,9 @@ body{
   color:#333;
   transition:.4s;
 }
-body.dark{
-  background:#121212;
-  color:#eee;
-}
+body.dark{background:#121212;color:#eee}
 
-/* ================= HERO (FOTO 1) ================= */
+/* HERO (FOTO1) */
 .hero{
   min-height:100vh;
   background:
@@ -32,16 +29,16 @@ body.dark{
   display:flex;
   align-items:center;
   justify-content:center;
-  text-align:center;
 }
 .hero-box{
-  background:rgba(255,255,255,.8);
+  background:rgba(255,255,255,.85);
   padding:50px 35px;
   border-radius:32px;
+  text-align:center;
   max-width:560px;
 }
 
-/* ================= CONTENT (FOTO 2) ================= */
+/* CONTENT (FOTO2) */
 #content{
   display:none;
   min-height:100vh;
@@ -55,7 +52,7 @@ body.dark #content{
     url("assets/foto2.jpg") center/cover no-repeat fixed;
 }
 
-/* ================= SECTION ================= */
+/* SECTION */
 section{
   padding:70px 20px;
   max-width:950px;
@@ -65,14 +62,12 @@ section{
 }
 section.active{opacity:1}
 
-/* ================= TEXT ================= */
 h1,h2,h3{
   font-family:'Playfair Display',serif;
   text-align:center;
 }
 .center{text-align:center}
 
-/* ================= ORNAMEN ================= */
 .ornamen{
   text-align:center;
   color:#b89b5e;
@@ -80,7 +75,7 @@ h1,h2,h3{
   margin:40px 0;
 }
 
-/* ================= CARD ================= */
+/* CARD */
 .card{
   background:rgba(255,255,255,.85);
   border-radius:28px;
@@ -88,11 +83,9 @@ h1,h2,h3{
   margin-top:30px;
   box-shadow:0 18px 45px rgba(184,155,94,.25);
 }
-body.dark .card{
-  background:rgba(0,0,0,.65);
-}
+body.dark .card{background:rgba(0,0,0,.65)}
 
-/* ================= BUTTON ================= */
+/* BUTTON */
 button{
   padding:14px 38px;
   border:none;
@@ -100,10 +93,9 @@ button{
   background:linear-gradient(135deg,#d6b36a,#b89b5e);
   color:#fff;
   cursor:pointer;
-  font-size:16px;
 }
 
-/* ================= COUNTDOWN ================= */
+/* COUNTDOWN */
 .countdown{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -118,7 +110,7 @@ button{
 }
 .cd span{font-size:32px;font-weight:600;color:#b89b5e}
 
-/* ================= GALLERY ================= */
+/* GALLERY */
 .gallery{
   display:flex;
   gap:18px;
@@ -129,7 +121,16 @@ button{
   border-radius:26px;
 }
 
-/* ================= FLOAT BUTTON ================= */
+/* INPUT */
+input,textarea{
+  width:100%;
+  padding:12px;
+  margin:8px 0;
+  border-radius:12px;
+  border:1px solid #ddd;
+}
+
+/* FLOAT */
 .float{
   position:fixed;
   right:20px;
@@ -145,7 +146,6 @@ button{
 #musicBtn{bottom:20px;background:#b89b5e}
 #darkBtn{bottom:90px;background:#333}
 
-/* ================= FOOTER ================= */
 footer{
   text-align:center;
   padding:60px 20px;
@@ -156,7 +156,6 @@ footer{
 
 <body>
 
-<!-- AUDIO -->
 <audio id="bgm" loop preload="auto" playsinline>
   <source src="assets/music.mp3" type="audio/mpeg">
 </audio>
@@ -185,15 +184,23 @@ footer{
 
 <div class="ornamen">❖ ❖ ❖</div>
 
+<!-- AYAT -->
 <section>
-  <blockquote class="center" style="font-family:'Amiri',serif;font-size:22px">
+  <blockquote class="center" style="font-family:'Amiri',serif;font-size:22px;line-height:1.9">
     وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا
+    لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً
     <br><strong>(QS. Ar-Rum : 21)</strong>
   </blockquote>
+  <p class="center" style="max-width:720px;margin:25px auto 0;font-style:italic">
+    “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan
+    dari jenismu sendiri agar kamu merasa tenteram kepadanya, dan Dia menjadikan
+    di antaramu rasa kasih dan sayang.”
+  </p>
 </section>
 
 <div class="ornamen">❖ ❖ ❖</div>
 
+<!-- COUNTDOWN -->
 <section>
   <h2>⏳ Menuju Hari Bahagia</h2>
   <div class="countdown">
@@ -206,11 +213,38 @@ footer{
 
 <div class="ornamen">❖ ❖ ❖</div>
 
+<!-- MAP -->
 <section>
-  <h2>📷 Galeri</h2>
-  <div class="gallery">
-    <img src="assets/foto1.jpg">
-    <img src="assets/foto2.jpg">
+  <h2>📍 Lokasi Acara</h2>
+  <div class="card">
+    <iframe src="https://www.google.com/maps?q=-7.176419,109.404790&output=embed"
+      width="100%" height="300" style="border:0;border-radius:15px"></iframe>
+  </div>
+</section>
+
+<div class="ornamen">❖ ❖ ❖</div>
+
+<!-- BUKU TAMU -->
+<section>
+  <h2>🤍 Buku Tamu</h2>
+  <div class="card">
+    <input id="namaTamu" placeholder="Nama">
+    <textarea id="ucapan" placeholder="Ucapan & Doa"></textarea>
+    <button onclick="kirimUcapan()">Kirim</button>
+    <div id="listUcapan" style="margin-top:20px"></div>
+  </div>
+</section>
+
+<div class="ornamen">❖ ❖ ❖</div>
+
+<!-- AMPLOP -->
+<section>
+  <h2>💳 Amplop Digital</h2>
+  <div class="card center">
+    <strong>BANK BRI</strong><br><br>
+    7348 0100 9678 536<br>
+    <small>a.n Nurul Absor</small><br><br>
+    <button onclick="copyText('734801009678536')">Salin Rekening</button>
   </div>
 </section>
 
@@ -222,51 +256,51 @@ footer{
 </div>
 
 <script>
-const bgm = document.getElementById("bgm");
-let playing = false;
+const bgm=document.getElementById("bgm");
+let playing=false;
 
-/* OPEN INVITE */
 function openInvite(){
-  bgm.muted = false;
   bgm.play().catch(()=>{});
-  playing = true;
-
-  document.getElementById("hero").style.display="none";
-  document.getElementById("content").style.display="block";
-
+  playing=true;
+  hero.style.display="none";
+  content.style.display="block";
   document.querySelectorAll("section").forEach(s=>s.classList.add("active"));
 }
 
-/* MUSIC */
-document.getElementById("musicBtn").onclick=()=>{
-  playing ? bgm.pause() : bgm.play();
-  playing=!playing;
-};
-
-/* DARK MODE */
-document.getElementById("darkBtn").onclick=()=>{
-  document.body.classList.toggle("dark");
-};
+musicBtn.onclick=()=>{playing?bgm.pause():bgm.play();playing=!playing}
+darkBtn.onclick=()=>document.body.classList.toggle("dark");
 
 /* NAMA TAMU */
-const p = new URLSearchParams(location.search);
+const p=new URLSearchParams(location.search);
 if(p.get("to")){
-  const nama = decodeURIComponent(p.get("to")).replace(/[_+]/g," ");
-  guest.innerText = nama;
-  personalMessage.innerText =
-    `Merupakan suatu kehormatan bagi kami apabila ${nama} berkenan hadir dan memberikan doa restu.`;
+  const nama=decodeURIComponent(p.get("to")).replace(/[_+]/g," ");
+  guest.innerText=nama;
+  personalMessage.innerText=
+  `Merupakan suatu kehormatan bagi kami apabila ${nama} berkenan hadir dan memberikan doa restu.`;
 }
 
 /* COUNTDOWN */
-const target = new Date("2026-01-28T09:00:00+07:00").getTime();
+const target=new Date("2026-01-28T09:00:00+07:00").getTime();
 setInterval(()=>{
-  const diff = target - Date.now();
-  if(diff<=0) return;
-  d.innerText = Math.floor(diff/86400000);
-  h.innerText = Math.floor(diff/3600000)%24;
-  m.innerText = Math.floor(diff/60000)%60;
-  s.innerText = Math.floor(diff/1000)%60;
+  const diff=target-Date.now();
+  if(diff<=0)return;
+  d.innerText=Math.floor(diff/86400000);
+  h.innerText=Math.floor(diff/3600000)%24;
+  m.innerText=Math.floor(diff/60000)%60;
+  s.innerText=Math.floor(diff/1000)%60;
 },1000);
+
+/* BUKU TAMU */
+function kirimUcapan(){
+  if(!namaTamu.value||!ucapan.value)return;
+  listUcapan.innerHTML+=`<p><strong>${namaTamu.value}</strong><br>${ucapan.value}</p>`;
+  namaTamu.value="";ucapan.value="";
+}
+
+function copyText(t){
+  navigator.clipboard.writeText(t);
+  alert("Berhasil disalin");
+}
 </script>
 
 </body>
