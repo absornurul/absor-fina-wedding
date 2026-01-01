@@ -108,4 +108,12 @@ footer{
   text-align:center;
   padding:60px 20px;
   color:#b89b5e;
+}.hero{
+  position:relative;
+  z-index:10;
+}
+
+#content{
+  position:relative;
+  z-index:1;
 }
