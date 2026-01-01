@@ -1,36 +1,101 @@
-body {
+<style>
+*{
+  box-sizing:border-box;
   margin:0;
+  padding:0;
+}
+
+body{
   font-family:'Poppins',sans-serif;
+  background:#faf8f3;
   color:#333;
-  transition:.4s;
-  background:
-    linear-gradient(rgba(250,248,243,.85),rgba(250,248,243,.85)),
-    url("./assets/foto2.jpg") center/cover fixed no-repeat;
+  transition:.3s;
 }
 
-.dark {
+body.dark{
+  background:#121212;
   color:#eee;
-  background:
-    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
-    url("./assets/foto2.jpg") center/cover fixed no-repeat;
-}
-/* BACKGROUND ISI UNDANGAN */
-#content{
-  background:
-    linear-gradient(rgba(250,248,243,.82),rgba(250,248,243,.82)),
-    url("./assets/foto2.jpg") center/cover fixed no-repeat;
-}
-.dark #content{
-  background:
-    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
-    url("./assets/foto2.jpg") center/cover fixed no-repeat;
 }
 
-/* CARD LEBIH TRANSPARAN */
-.card{
-  background:rgba(255,255,255,.75);
-}
-.dark .card{
-  background:rgba(0,0,0,.65);
+/* COVER */
+.cover{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:40px 20px;
+  background:#000;
   color:#fff;
 }
+
+.cover-content h1,
+.cover-content h2,
+.cover-content p{
+  margin-bottom:10px;
+}
+
+/* SECTION */
+section{
+  padding:60px 20px;
+  max-width:900px;
+  margin:auto;
+}
+
+/* CARD */
+.card{
+  background:#ffffff;
+  padding:30px;
+  border-radius:12px;
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+body.dark .card{
+  background:#1e1e1e;
+}
+
+/* ORNAMEN */
+.ornamen{
+  text-align:center;
+  margin:20px 0;
+  color:#b89b5e;
+}
+
+/* TEXT */
+h1,h2,h3{
+  font-family:'Playfair Display',serif;
+  text-align:center;
+  margin-bottom:10px;
+}
+
+.center{
+  text-align:center;
+}
+
+/* BUTTON */
+.btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 28px;
+  background:#b89b5e;
+  color:#fff;
+  border-radius:30px;
+  text-decoration:none;
+}
+
+/* TOGGLE DARK MODE */
+.toggle{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  background:#b89b5e;
+  color:#fff;
+  font-size:18px;
+  border:none;
+  cursor:pointer;
+  z-index:99;
+}
+</style>
