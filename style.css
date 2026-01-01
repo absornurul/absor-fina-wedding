@@ -44,7 +44,7 @@ section{
 
 /* CARD */
 .card{
-  background:#ffffff;
+  background:rgba(255,255,255,.85);
   padding:30px;
   border-radius:12px;
   box-shadow:0 5px 20px rgba(0,0,0,.08);
@@ -99,3 +99,17 @@ h1,h2,h3{
   z-index:99;
 }
 </style>
+/* BACKGROUND ISI UNDANGAN */
+#content{
+  background:
+    linear-gradient(rgba(250,248,243,.85),rgba(250,248,243,.85)),
+    url("assets/foto2.jpg") center/cover no-repeat fixed;
+  transition:.4s;
+}
+
+/* MODE GELAP */
+.dark #content{
+  background:
+    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
+    url("assets/foto2.jpg") center/cover no-repeat fixed;
+}
