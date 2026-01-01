@@ -125,9 +125,7 @@ footer{text-align:center;padding:60px 20px;color:#b89b5e}
   <p class="center" style="max-width:720px;margin:25px auto 0;font-style:italic;line-height:1.8;color:#555">
     “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu
     pasangan-pasangan dari jenismu sendiri, agar kamu merasa tenteram kepadanya,
-    dan Dia menjadikan di antaramu rasa kasih dan sayang.
-    Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda
-    bagi kaum yang berpikir.”
+    dan Dia menjadikan di antaramu rasa kasih dan sayang.”
   </p>
 </section>
 
@@ -164,23 +162,33 @@ footer{text-align:center;padding:60px 20px;color:#b89b5e}
 <section>
   <h2>🕌 Akad & Resepsi</h2>
   <div class="card center">
+
+    <h2>Akad</h2>
     <p>
-      <h2>Akad</h2>
       Rabu, 28 Januari 2026<br>
-      <span id="tanggalHijriah"></span><br>
-      <span id="tanggalJawa"></span><br>
+      <span id="tanggalHijriahAkad"></span><br>
+      <span id="tanggalJawaAkad"></span><br>
       Pukul 09.00 WIB
     </p>
+
     <hr style="margin:25px 0;opacity:.3">
+
     <h2>Resepsi</h2>
-    Rabu, 28 Januari 2026<br>
-      <span id="tanggalHijriah"></span><br>
-      <span id="tanggalJawa"></span><br>
-    <p>Pukul 10.00 WIB – Selesai</p>
+    <p>
+      Rabu, 28 Januari 2026<br>
+      <span id="tanggalHijriahResepsi"></span><br>
+      <span id="tanggalJawaResepsi"></span><br>
+      Pukul 10.00 WIB – Selesai
     </p>
+
     <hr style="margin:25px 0;opacity:.3">
+
     <h2>Lokasi Acara</h2>
-    <p>Dusun Kali Bawo, Kel Badak, Kec Belik, Kab Pemalang, Jawa Tengah, Indonesia</p>
+    <p>
+      Dusun Kali Bawo, Kel Badak, Kec Belik,<br>
+      Kab Pemalang, Jawa Tengah, Indonesia
+    </p>
+
   </div>
 </section>
 
@@ -194,8 +202,7 @@ footer{text-align:center;padding:60px 20px;color:#b89b5e}
       src="https://www.google.com/maps?q=-7.176419,109.404790&output=embed"
       width="100%" height="300"
       style="border:0;border-radius:15px"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
+      loading="lazy">
     </iframe>
 
     <div class="center" style="margin-top:20px">
@@ -244,7 +251,6 @@ footer{text-align:center;padding:60px 20px;color:#b89b5e}
 const bgm=document.getElementById("bgm");
 let playing=false;
 
-/* OPEN INVITE */
 function openInvite(){
   bgm.play().catch(()=>{});
   playing=true;
@@ -277,13 +283,17 @@ setInterval(()=>{
 },1000);
 
 /* HIJRIAH & JAWA */
-document.getElementById("tanggalHijriah").innerText="10 Sya’ban 1447 H";
+const hijriah="10 Sya’ban 1447 H";
 const hari=["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
 const pasaran=["Legi","Pahing","Pon","Wage","Kliwon"];
 const ref=new Date(1970,0,1);
-document.getElementById("tanggalJawa").innerText=
-  hari[new Date("2026-01-28").getDay()]+" "+
-  pasaran[Math.floor((new Date("2026-01-28")-ref)/86400000)%5];
+const acara=new Date("2026-01-28");
+const jawa=hari[acara.getDay()]+" "+pasaran[Math.floor((acara-ref)/86400000)%5];
+
+tanggalHijriahAkad.innerText=hijriah;
+tanggalJawaAkad.innerText=jawa;
+tanggalHijriahResepsi.innerText=hijriah;
+tanggalJawaResepsi.innerText=jawa;
 
 /* BUKU TAMU + STORAGE */
 function kirimUcapan(){
